@@ -1,0 +1,87 @@
+{
+    "status_code": 200,
+    "data": {
+        "id": "d4",
+        "title": "1 kilo de helado",
+        "text": "Elegi hasta 4 de nuestros más\nricos sabores ",
+        "price": 1300.00,
+        "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
+        "stock": -1,
+        "onlyCash": false,
+        "tags": [
+            "Helados"
+        ],
+        "products": [
+            {
+                "id": "mp1",
+                "title": "Helado",
+                "stock": -1,
+                "length": 1,
+                "minLength": 1,
+                "maxLength": 1,
+                "options": [
+                    {
+                        "title": "Sabores",
+                        "button": "Seleccionar",
+                        "msg": {
+                            "empty": "No se seleccionaron sabores."
+                        },
+                        "options": [
+                            {
+                                "id": "mp2",
+                                "title": "Frutilla",
+                                "description": "Especial para la temporada",
+                                "stock": -1
+                            }
+                        ],
+                        "length": null,
+                        "minLength": 1,
+                        "maxLength": 4,
+                        "maxLengthPerOption": 1,
+                        "aditionalOffset": null,
+                        "pricePerAditional": 0.00                        
+                    },
+                    {
+                        "title": "Toppings",
+                        "button": "Seleccionar",
+                        "msg": {
+                            "empty": "No se seleccionaron toppings.",
+                            "aditionalOffset": "2 toppings gratis a elección. Topping adicional +$10."
+                        },
+                        "options": [
+                            {
+                                "id": "mp7",
+                                "title": "Chips de chocolate",
+                                "description": "",
+                                "stock": -1,
+                                "price": 0.00
+                            },
+                            {
+                                "id": "mp8",
+                                "title": "Rocklets",
+                                "description": "",
+                                "stock": -1,
+                                "price": 0.00
+                            },
+                            {
+                                "id": "mp9",
+                                "title": "Granola crocante",
+                                "quantity": 1,
+                                "weightUnit": "unit",
+                                "description": "",
+                                "stock": -1,
+                                "price": 0.00
+                            }
+                        ],
+                        "length": null,
+                        "minLength": 0,
+                        "maxLength": null,
+                        "maxLengthPerOption": 1,
+                        "aditionalOffset": 2,
+                        "pricePerAditional": 10.00
+                    }
+                ]
+            }
+        ]
+    }
+}

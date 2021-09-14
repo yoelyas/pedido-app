@@ -1,0 +1,60 @@
+{
+    "status_code": 200,
+    "data": {
+        "id": "a1",
+        "title": "3x2 en alfajores Tufic",
+        "text": "gustos a eleccion.\nSolo en efectivo.",
+        "price": 700.00,
+        "image": "https://http2.mlstatic.com/D_NQ_NP_958433-MLA43350038693_092020-O.jpg",
+        "stock": -1,
+        "onlyCash": true,
+        "tags": [
+            "Promos",
+            "Alfajores"
+        ],
+        "products": [
+            {
+                "id": "mp10",
+                "title": "Alfajores",
+                "stock": -1,
+                "length": 1,
+                "minLength": 1,
+                "maxLength": 1,                
+                "options": [
+                    {
+                        "title": "Sabores",
+                        "button": "Seleccionar",
+                        "msg": {
+                            "empty": "No se seleccionaron alfajores."
+                        },
+                        "options": [
+                            {
+                                "id": "mp11",
+                                "title": "Alfajor almendrado",
+                                "description": "",
+                                "stock": -1
+                            },
+                            {
+                                "id": "mp12",
+                                "title": "Alfajor de dulce de leche",
+                                "description": "",
+                                "stock": -1
+                            },
+                            {
+                                "id": "mp12",
+                                "title": "Alfajor de chocolate",
+                                "description": "",
+                                "stock": -1
+                            }
+                        ],
+                        "minLength": 3,
+                        "maxLength": 3,
+                        "maxLengthPerOption": null,
+                        "aditionalOffset": null,
+                        "pricePerAditional": 0.00
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "status_code": 200,
+    "data": {
+        "id": "b2",
+        "title": "Paleta chica mascarpone",
+        "text": "Deliciosa paleta helada glaseada con trocitos de almendra",
+        "price": 500.00,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/245px-Ice_Cream_dessert_02.jpg",
+        "stock": -1,
+        "onlyCash": true,
+        "tags": [
+            "Paletas"
+        ],
+        "products": [
+            {
+                "id": "mp20",
+                "title": "Paletas",
+                "stock": -1,
+                "length": null,
+                "minLength": 1,
+                "maxLength": null,
+                "options": []
+            }
+        ]
+    }
+}
