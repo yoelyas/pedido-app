@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tufic_1_0">
+    package="com.example.tufic_app">
    <application
-        android:label="tufic_1_0"
+        android:label="tufic_app"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
