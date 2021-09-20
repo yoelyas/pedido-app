@@ -1,33 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
-
-import '../providers/cart_provider.dart';
+import 'package:tufic_app/libraries/responsive.dart';
 
 class MainAppBar {
-  static AppBar create({
-    required BuildContext context,
-    required String store,
-    required String logo,
+  BuildContext context;
+  String store;
+  String logo;
+  Responsive? responsive;
+  MainAppBar({
+    required this.context,
+    required this.store,
+    required this.logo,
   }) {
-    double height = Maxheight(context);
+    responsive = Responsive(context: context);
+  }
+
+  double _getHeight() {
+    const Map<String, double> heightMap = {
+      "xs": 50,
+      "sm": 50,
+      "md": 60,
+      "lg": 70,
+      "xl": 80,
+    };
+
+    String screenSize = responsive!.getScreenSize();
+
+    double height = heightMap[screenSize]!;
+
+    if (store.isNotEmpty) {
+      height += 10;
+    }
+
+    return height;
+  }
+
+  AppBar getWidget() {
     return AppBar(
       elevation: 1,
-      toolbarHeight: height * 0.15,
-      backwardsCompatibility: false,
+      toolbarHeight: _getHeight(),
+
+      //     backwardsCompatibility: false,
       centerTitle: true,
       title: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Align(
-          heightFactor: 0.2,
-          child: Image.asset(
-            logo,
-            fit: BoxFit.contain,
-            height: height * 0.2,
-          ),
+        Image.asset(
+          logo,
+          fit: BoxFit.contain,
+          height: _getHeight() - 30,
         ),
         Text(store, //cartProvider.getStore(),
-            style: drawBranch(context, store)),
+            style: _drawBranch(context, store)),
       ]),
       actions: <Widget>[
         _DrawCart(store: store),
@@ -36,35 +59,79 @@ class MainAppBar {
       iconTheme: const IconThemeData(color: Colors.black),
     );
   }
-}
 
-TextStyle drawBranch(BuildContext context, String store) {
-  double width = Maxwidth(context);
-  if (store.isNotEmpty) {
-    return TextStyle(
-      color: tuficTheme.primary,
-      fontSize: width * 0.05,
-      fontFamily: tuficTheme.fonts.title,
-    );
-  } else {
-    return const TextStyle(
-      fontSize: 0,
-    );
+  TextStyle _drawBranch(BuildContext context, String store) {
+    double height = _getHeight();
+    if (store.isNotEmpty) {
+      return TextStyle(
+        color: tuficTheme.primary,
+        fontSize: height - 45,
+        fontFamily: tuficTheme.fonts.title,
+      );
+    } else {
+      return const TextStyle(
+        fontSize: 0,
+      );
+    }
   }
 }
 
 // ignore: must_be_immutable
-class _DrawCart extends StatelessWidget {
+class _DrawCart extends StatefulWidget {
   _DrawCart({required this.store});
   String store;
 
   @override
+  State<_DrawCart> createState() => _DrawCartState();
+}
+
+class _DrawCartState extends State<_DrawCart> {
+  @override
   Widget build(
     BuildContext context,
   ) {
-    if (store.isNotEmpty) {
-      return IconButton(
-          icon: const Icon(Icons.shopping_cart), onPressed: () {});
+    if (widget.store.isNotEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(10),
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            IconButton(
+                icon: const Icon(Icons.shopping_cart),
+                onPressed: () {
+                  productCont++;
+                  setState(() {});
+                }),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 15,
+                  width: 15,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.black),
+                      shape: BoxShape.rectangle,
+                      color: Colors.white,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(50.0))),
+                  //padding: EdgeInsets.only(left: 22, top: 3),
+                  child: Text(
+                    "$productCont",
+                    style: TextStyle(
+                      color: tuficTheme.primary,
+                      fontSize: 10,
+                      fontFamily: tuficTheme.fonts.title,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
     } else {
       return const Icon(
         Icons.shopping_cart,

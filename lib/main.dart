@@ -31,7 +31,7 @@ class TuficApp extends StatelessWidget {
       title: 'Tufic App',
       initialRoute: 'home',
       routes: {
-        'home': (_) => HomePage(),
+        'home': (_) => const HomePage(),
       },
     );
   }
