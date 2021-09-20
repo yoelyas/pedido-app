@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tufic_app/components/main_app_bar.dart';
 import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
+import 'package:tufic_app/widgets/sidebar_menu.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = 'home';
@@ -17,7 +18,9 @@ class HomePage extends StatelessWidget {
         store: cartProvider.getStore());
     return Scaffold(
       appBar: mainAppBar.getWidget(),
-      drawer: Drawer(),
+      drawer: SideBarMenu(
+        context: context,
+      ),
       body: Center(
         child: TextButton(
             child: const Text("inicializar/borrar bariables "),
