@@ -1,7 +1,8 @@
 // ignore: non_constant_identifier_names
 import 'package:flutter/cupertino.dart';
 
-const Map<String, dynamic> breakpoints = {
+/// Siempre ordenado de menor a mayor
+const Map<String, double> breakpoints = {
   "xs": 320, //*1
   "sm": 425,
   "md": 768, // *1.2
@@ -34,43 +35,37 @@ class Responsive {
 
   String getScreenSize() {
     double width = getScreenWidth();
-    if (width > breakpoints["lg"]) {
-      return "xl";
-    } else if (width > breakpoints["md"]) {
-      return "lg";
-    } else if (width >= breakpoints["sm"]) {
-      return "md";
-    } else if (width >= breakpoints["xs"]) {
-      return "sm";
-    }
-    return "xs";
+    String size = '';
+
+    breakpoints.forEach((key, value) {
+      if (size == '') {
+        size = key;
+      }
+      if (width >= value) {
+        size = key;
+      }
+    });
+
+    return size;
   }
 
-  bool isSmallScreen() {
-    return getScreenSize() == "sm";
-  }
+  fit(Map<String, dynamic> returnMap) {
+    String screenSize = getScreenSize();
 
-  /*
-  static double oldGetMaxWidth(BuildContext context) {
-    double width = 
-    if (width > breakpoints["lg"]) {
-      return breakpoints["xl"];
-    } else if (width > breakpoints["md"]) {
-      return breakpoints["lg"];
-    } else if (width >= breakpoints["sm"]) {
-      return breakpoints["md"];
-    } else if (width >= breakpoints["xs"]) {
-      return breakpoints["sm"];
-    }
-    return breakpoints["xs"];
-  }
+    dynamic returnValue;
 
-  double getMaxHeight(BuildContext context, int? maxHeight) {
-    if (MediaQuery.of(context).size.height < 500) {
-      return MediaQuery.of(context).size.height;
-    } else {
-      return 500;
-    }
+    bool finished = false;
+
+    breakpoints.forEach((key, value) {
+      // existe el valor de la key en el map?
+      if (!finished) {
+        if (returnMap.containsKey(key)) {
+          returnValue = returnMap[key];
+        }
+        finished = screenSize == key;
+      }
+    });
+
+    return returnValue;
   }
-  */
 }

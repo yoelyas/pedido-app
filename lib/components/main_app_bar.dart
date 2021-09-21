@@ -25,6 +25,7 @@ class MainAppBar {
     required this.logo,
   }) {
     responsive = Responsive(context: context);
+    //responsive.fit(xs: 12, xl: 20);
   }
 
   AppBar getWidget() {
@@ -33,7 +34,7 @@ class MainAppBar {
         logo,
         fit: BoxFit.contain,
         //el -10 es el margen que quiero que tenga mi logo
-        height: _getTamanoPantalla() - title,
+        height: responsive!.fit(heightMap) - title,
       )
     ];
 
@@ -61,17 +62,9 @@ class MainAppBar {
     );
   }
 
-  // me devuelve el alto del appbar sin modificar segun el tamaño de la pantalla
-  double _getTamanoPantalla() {
-    String screenSize = responsive!.getScreenSize();
-
-    double height = heightMap[screenSize]!;
-    return height;
-  }
-
 // debuelve el alto del appbar sumandle el tamaño del subtitulo si este esta seteado
   double _getHeightAppBar() {
-    double heigth = _getTamanoPantalla();
+    double heigth = responsive!.fit(heightMap);
 
     return store.isEmpty ? heigth : heigth + subTitle;
   }
@@ -93,23 +86,31 @@ class _DrawCartState extends State<_DrawCart> {
     BuildContext context,
   ) {
     if (widget.store.isNotEmpty) {
-      return Container(
-        //padding: const EdgeInsets.all(10),
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            IconButton(
-                icon: Icon(
+      return Stack(
+        //alignment: Alignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(right: 10),
+            alignment: Alignment.center,
+            child: IconButton(
+                alignment: Alignment.center,
+                icon: const Icon(
                   Icons.shopping_cart,
-                  size: iconSize,
+                  //iconSize,
                 ),
+                iconSize: iconSize,
                 onPressed: () {
                   productCont++;
                   setState(() {});
                 }),
-            contCompras(),
-          ],
-        ),
+          ),
+          Container(
+            width: iconSize + 10 + 8,
+            // + margin right + padding izq del icon button
+            alignment: Alignment.centerRight,
+            child: contCompras(),
+          )
+        ],
       );
     } else {
       return const Icon(
@@ -119,39 +120,34 @@ class _DrawCartState extends State<_DrawCart> {
     }
   }
 
-  Row contCompras() {
+  Container contCompras() {
+    String counter = productCont >= 15 ? "+99" : "$productCont";
     double fontSize = iconSize - 18;
-    double height = iconSize - 15;
-    double width = iconSize - 15;
+    double height = iconSize - 10;
+    double width = 15 + (fontSize * 0.5) * counter.length;
     if (productCont != 0) {
-      return Row(
-        children: [
-          SizedBox(
-            width: iconSize - 10,
+      return Container(
+        alignment: Alignment.center,
+        height: height,
+        width: width,
+        margin: const EdgeInsets.only(bottom: 24),
+        decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Colors.white),
+            color: Colors.red,
+            borderRadius: BorderRadius.all(Radius.circular(50.0))),
+        //padding: EdgeInsets.only(left: 22, top: 3),
+        child: Text(
+          counter,
+          style: TextStyle(
+            color: Colors.white, //tuficTheme.primary,
+            fontSize: fontSize,
+            fontFamily: tuficTheme.fonts.textBold,
+            fontWeight: FontWeight.bold,
           ),
-          Container(
-            alignment: Alignment.center,
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.black),
-                shape: BoxShape.rectangle,
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(50.0))),
-            //padding: EdgeInsets.only(left: 22, top: 3),
-            child: Text(
-              "$productCont",
-              style: TextStyle(
-                color: tuficTheme.primary,
-                fontSize: fontSize,
-                fontFamily: tuficTheme.fonts.title,
-              ),
-            ),
-          ),
-        ],
+        ),
       );
     } else {
-      return Row();
+      return Container();
     }
   }
 }
