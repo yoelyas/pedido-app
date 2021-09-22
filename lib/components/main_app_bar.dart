@@ -41,10 +41,14 @@ class MainAppBar {
 // dibuja la sucursal en el appbar si este se encuentra seteado
 // en caso contrario setea su font el 0 para que el appbar ocupe menos espacio
     if (store.isNotEmpty) {
-      column.add(Text(store, //cartProvider.getStore(),
+      //agrega una separacion entre el titutlo y la sucursal
+      column.add(const SizedBox(
+        height: 5,
+      ));
+      column.add(Text(store.toUpperCase(), //cartProvider.getStore(),
           style: TextStyle(
             color: tuficTheme.primary,
-            fontSize: subTitle,
+            fontSize: ((responsive!.fit(heightMap) * 0.5) - subTitle + 10),
             fontFamily: tuficTheme.fonts.title,
           )));
     }
@@ -134,7 +138,7 @@ class _DrawCartState extends State<_DrawCart> {
         decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.white),
             color: Colors.red,
-            borderRadius: BorderRadius.all(Radius.circular(50.0))),
+            borderRadius: const BorderRadius.all(Radius.circular(50.0))),
         //padding: EdgeInsets.only(left: 22, top: 3),
         child: Text(
           counter,

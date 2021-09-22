@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:tufic_app/const/config.dart';
+import 'package:tufic_app/const/menu.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/pages/home_page.dart';
 
 class SideBarMenu extends StatelessWidget {
   // ignore: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
@@ -45,49 +45,33 @@ class SideBarMenu extends StatelessWidget {
               ),
             ),
           ),
-          _MenuBottom(
-            icon: Icon(Icons.home),
-            title: 'Inicio',
-            routeName: HomePage.routeName,
-          ),
-          _MenuBottom(
-            icon: Icon(Icons.people),
-            title: 'Registrarme/ Iniciar seción',
-            routeName: '',
-          ),
-          _MenuBottom(
-            icon: Icon(Icons.arrow_right),
-            title: 'Sabores',
-            routeName: '',
-          ),
-          _MenuBottom(
-            icon: Icon(Icons.arrow_right),
-            title: 'Sucursales',
-            routeName: '',
-          ),
-          _MenuBottom(
-            icon: Icon(Icons.arrow_right),
-            title: 'Contacto',
-            routeName: '',
-          ),
-          _MenuBottom(
-            icon: Icon(Icons.arrow_right),
-            title: 'Inicio',
-            routeName: '',
-          ),
-          _MenuBottom(
-            icon: Icon(Icons.arrow_right),
-            title: 'Acerca de la APP',
-            routeName: '',
-          ),
+          ButtomList.build(),
         ],
       ),
     );
   }
 }
 
+class ButtomList {
+  static Widget build() {
+    List<Widget> menuButtom = [];
+
+    MENU_CONFIG.forEach((key, value) {
+      if (value["onlyAuth"] == inicioSecion || value["onlyAuth"] == null) {
+        menuButtom.add(_MenuBottom(
+          icon: value["icon"],
+          title: value["title"],
+          routeName: value["routeName"],
+        ));
+      }
+    });
+
+    return Column(children: menuButtom);
+  }
+}
+
 class _MenuBottom extends StatelessWidget {
-  final Icon icon;
+  final IconData icon;
   final String title;
   final String routeName;
   // ignore: use_key_in_widget_constructors
@@ -97,7 +81,7 @@ class _MenuBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: icon,
+      leading: Icon(icon),
       title: Text(
         title,
         style: TextStyle(

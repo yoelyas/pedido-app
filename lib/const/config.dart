@@ -27,6 +27,7 @@ const Map<String, Map<String, dynamic>> APP_CONFIG = {
 };
 
 int productCont = 0;
+bool inicioSecion = false;
 
 // ignore: non_constant_identifier_names
 String VerAreaDelibety() {

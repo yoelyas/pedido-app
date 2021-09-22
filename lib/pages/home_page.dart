@@ -27,7 +27,9 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               if (cartProvider.getStore().isEmpty) {
                 cartProvider.initializate("Belgrano");
+                inicioSecion = true;
               } else {
+                inicioSecion = false;
                 cartProvider.clear();
               }
             }),
