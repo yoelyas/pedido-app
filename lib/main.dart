@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/pages/home_page.dart';
+import 'package:tufic_app/pages/pedidos_pages.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
+import 'package:tufic_app/services/productos_providers.dart';
 
 void main() => runApp(const AppState());
 
@@ -14,6 +16,9 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductosProvider(),
         ),
       ],
       child: const TuficApp(),
@@ -32,6 +37,7 @@ class TuficApp extends StatelessWidget {
       initialRoute: 'home',
       routes: {
         'home': (_) => const HomePage(),
+        'pedidos': (_) => const PedidosPage(),
       },
     );
   }

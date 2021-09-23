@@ -49,12 +49,12 @@ class MainAppBar {
           style: TextStyle(
             color: tuficTheme.primary,
             fontSize: ((responsive!.fit(heightMap) * 0.5) - subTitle + 10),
-            fontFamily: tuficTheme.fonts.title,
+            fontFamily: tuficTheme.fonts.text,
           )));
     }
     return AppBar(
-      elevation: 1,
-      toolbarHeight: _getHeightAppBar(),
+      elevation: 0,
+      toolbarHeight: 63, //_getHeightAppBar(),
       centerTitle: true,
       title:
           Column(mainAxisAlignment: MainAxisAlignment.center, children: column),
@@ -67,11 +67,11 @@ class MainAppBar {
   }
 
 // debuelve el alto del appbar sumandle el tamaño del subtitulo si este esta seteado
-  double _getHeightAppBar() {
+  /* double _getHeightAppBar() {
     double heigth = responsive!.fit(heightMap);
 
     return store.isEmpty ? heigth : heigth + subTitle;
-  }
+  }*/
 }
 
 // ignore: must_be_immutable

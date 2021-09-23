@@ -17,13 +17,16 @@ class SideBarMenu extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.only(top: 10),
         children: <Widget>[
+          SizedBox(
+            height: 20,
+          ),
           Container(
             width: 90,
             height: 90,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    fit: BoxFit.contain, image: NetworkImage(image)),
+                    fit: BoxFit.contain, image: AssetImage(image)),
                 boxShadow: const [
                   BoxShadow(
                     offset: Offset(4.0, 4.0),
