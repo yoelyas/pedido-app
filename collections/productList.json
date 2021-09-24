@@ -39,7 +39,7 @@
             "stock": -1,
             "onlyCash": false,
             "tags": [
-                "Todo"
+                "paletas"
             ]
         },
         {
@@ -51,7 +51,7 @@
             "stock": false,
             "onlyCash": false,
             "tags": [
-                "Todo"
+                "paletas"
             ]
         },
         {
@@ -63,7 +63,7 @@
             "stock": -1,
             "onlyCash": false,
             "tags": [
-                "Todo"
+                "postre"
             ]
         },
         {
@@ -75,7 +75,7 @@
             "stock": -1,
             "onlyCash": false,
             "tags": [
-                "Todo"
+                "helado"
             ]
         },
         {
@@ -87,7 +87,7 @@
             "stock": -1,
             "onlyCash": false,
             "tags": [
-                "Todo"
+                "helado"
             ]
         },
         {
@@ -99,7 +99,7 @@
             "stock": -1,
             "onlyCash": false,
             "tags": [
-                "Todo"
+                "helado"
             ]
         }
     ]

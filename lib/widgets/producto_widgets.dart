@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
 
