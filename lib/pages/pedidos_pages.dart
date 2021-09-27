@@ -8,7 +8,7 @@ import 'package:tufic_app/models/product_list_item.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';
 import 'package:tufic_app/widgets/barra_de_busqueda.dart';
-import 'package:tufic_app/widgets/barra_de_productos.dart';
+import 'package:tufic_app/widgets/menu_categorias.dart';
 import 'package:tufic_app/widgets/producto_widgets.dart';
 import 'package:tufic_app/widgets/sidebar_menu.dart';
 
@@ -28,11 +28,7 @@ class PedidosPage extends StatelessWidget {
       appBar: mainAppBar.getWidget(),
       drawer: SideBarMenu(context: context),
       //backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          _buildProductList(context),
-        ],
-      ),
+      body: _buildProductList(context),
     );
   }
 
@@ -63,6 +59,76 @@ class Productos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> categorias = [];
+    for (var item in productos) {
+      if (!categorias.contains(item.category)) {
+        categorias.add(item.category);
+      }
+    }
+
+    MenuCategoriasWidget menuCategoriasWidget = MenuCategoriasWidget(
+      categorias: categorias,
+    );
+
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: SearchBar.build(context),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: menuCategoriasWidget.build(context),
+      ),
+      Expanded(
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          //scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.all(8),
+          children: <Widget>[
+            const SizedBox(
+              height: 5,
+            ),
+            //SearchAppBar(),
+            SizedBox(
+              // width: 50,
+              child: Text('Promos',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontFamily: tuficTheme.fonts.title,
+                  )),
+            ),
+            PromosPages(
+              productListItem: productos[0],
+            ),
+            const Divider(
+              height: 20,
+              indent: 20,
+              endIndent: 20,
+            ),
+            SizedBox(
+              // width: 20,
+              child: Text('Helados',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontFamily: tuficTheme.fonts.title,
+                  )),
+            ),
+            ProductListPage(
+              productList: productos,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
+        ),
+      ),
+    ]);
+
+    /*
     return Expanded(
       child: Column(
         children: [
@@ -70,20 +136,28 @@ class Productos extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const BarraProductos(),
+          MenuCategoriasWidget(
+            categorias: categorias,
+          ),
+          /*
+          Expanded(
+            flex: 1,
+            child: MenuCategoriasWidget(
+              categorias: categorias,
+            ),
+          ),
+          */
           const Divider(
             height: 20,
             indent: 20,
             endIndent: 20,
           ),
           Expanded(
-            flex: 8,
+            flex: 10,
             child: ListView(
               physics: const BouncingScrollPhysics(),
               //scrollDirection: Axis.horizontal,
-
               padding: const EdgeInsets.all(8),
-
               children: <Widget>[
                 const SizedBox(
                   height: 5,
@@ -129,6 +203,8 @@ class Productos extends StatelessWidget {
         ],
       ),
     );
+
+    */
   }
 }
 
