@@ -9,6 +9,7 @@ class ProductListItem {
     required this.image,
     required this.stock,
     required this.onlyCash,
+    required this.category,
     required this.tags,
   });
 
@@ -19,6 +20,7 @@ class ProductListItem {
   String image;
   dynamic stock;
   bool onlyCash;
+  String category;
   List<String> tags;
 
   factory ProductListItem.fromJson(String str) =>
@@ -34,6 +36,7 @@ class ProductListItem {
         image: json["image"],
         stock: json["stock"],
         onlyCash: json["onlyCash"],
+        category: json["category"],
         tags: List<String>.from(json["tags"].map((x) => x)),
       );
 
@@ -45,6 +48,7 @@ class ProductListItem {
         "image": image,
         "stock": stock,
         "onlyCash": onlyCash,
+        "category": category,
         "tags": List<dynamic>.from(tags.map((x) => x)),
       };
 }

@@ -12,6 +12,7 @@
             "image": "https://http2.mlstatic.com/D_NQ_NP_958433-MLA43350038693_092020-O.jpg",
             "stock": -1,
             "onlyCash": true,
+            "category": "Promosiones",
             "tags": [
                 "Promos",
                 "Alfajores"
@@ -25,6 +26,7 @@
             "image": "https://http2.mlstatic.com/D_NQ_NP_958433-MLA43350038693_092020-O.jpg",
             "stock": -1,
             "onlyCash": true,
+            "category": "Promosiones",
             "tags": [
                 "Promos",
                 "Alfajores"
@@ -38,6 +40,7 @@
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/245px-Ice_Cream_dessert_02.jpg",
             "stock": -1,
             "onlyCash": false,
+            "category": "Paletas",
             "tags": [
                 "paletas"
             ]
@@ -50,6 +53,7 @@
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/245px-Ice_Cream_dessert_02.jpg",
             "stock": false,
             "onlyCash": false,
+            "category": "Paletas",
             "tags": [
                 "paletas"
             ]
@@ -62,6 +66,7 @@
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/245px-Ice_Cream_dessert_02.jpg",
             "stock": -1,
             "onlyCash": false,
+            "category": "Postres",
             "tags": [
                 "postre"
             ]
@@ -74,6 +79,7 @@
             "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
             "stock": -1,
             "onlyCash": false,
+            "category": "Helado",
             "tags": [
                 "helado"
             ]
@@ -86,6 +92,7 @@
             "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
             "stock": -1,
             "onlyCash": false,
+            "category": "Helado",
             "tags": [
                 "helado"
             ]
@@ -98,6 +105,7 @@
             "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
             "stock": -1,
             "onlyCash": false,
+            "category": "Helado",
             "tags": [
                 "helado"
             ]
