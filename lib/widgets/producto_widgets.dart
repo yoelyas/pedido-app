@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
+import 'package:tufic_app/services/category_provider.dart';
 
 class ProductListPage extends StatelessWidget {
   final List<ProductListItem> productList;
@@ -13,29 +16,47 @@ class ProductListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CategoryProvider categoryProvider = Provider.of<CategoryProvider>(context);
     final List<Widget> children = [];
-
-    for (var category in categorias) {
-      children.add(SizedBox(
-        width: 280,
-        child: Text(category,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
-              fontFamily: tuficTheme.fonts.textBold,
-            )),
-      ));
-      for (var productListItem in productList) {
-        if (category == productListItem.category) {
-          children.add(Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ProductoPages(productListItem: productListItem),
-          ));
+    for (var i = 0; i < categorias.length; i++) {
+      final List<Widget> categories = [];
+      categories.add(
+        SizedBox(
+          width: 280,
+          child: Text(categorias[i],
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontFamily: tuficTheme.fonts.textBold,
+              )),
+        ),
+      );
+      for (var j = 0; j < productList.length; j++) {
+        if (categorias[i] == productList[j].category) {
+          categories.add(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ProductoPages(productListItem: productList[j]),
+            ),
+          );
         }
       }
+      children.add(AutoScrollTag(
+          key: ValueKey(categorias[i]),
+          controller: categoryProvider.getProductsScrollController(),
+          index: i,
+          child: Column(
+            children: categories,
+          )));
     }
-    return Column(
-      children: children,
+    return Expanded(
+      child: ListView(
+        controller: categoryProvider.getProductsScrollController(),
+        physics: const BouncingScrollPhysics(),
+        //scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.all(8),
+        children: children,
+      ),
     );
   }
 }

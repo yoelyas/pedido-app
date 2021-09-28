@@ -84,16 +84,7 @@ class Productos extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: menuCategoriasWidget.build(context),
       ),
-      Expanded(
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          //scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.all(8),
-          children: <Widget>[
-            ProductListPage(productList: productos, categorias: categorias),
-          ],
-        ),
-      ),
+      ProductListPage(productList: productos, categorias: categorias),
     ]);
   }
 }

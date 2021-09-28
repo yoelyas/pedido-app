@@ -43,9 +43,11 @@ class CategoryProvider with ChangeNotifier {
   selectCategory(String category) {
     if (!isSelected(category)) {
       setSelectedCategory(category);
-      _categoriesScrollController.scrollToIndex(getCategoryIndex(category),
+      getCategoriesScrollController().scrollToIndex(getCategoryIndex(category),
           preferPosition: AutoScrollPosition.begin);
       //refreshView();
+      getProductsScrollController().scrollToIndex(getCategoryIndex(category),
+          preferPosition: AutoScrollPosition.begin);
     }
   }
 
