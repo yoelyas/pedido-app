@@ -12,5 +12,4 @@ final tuficTheme = AppTheme(
       display: 'gotham-bold',
       text: 'lato-regular',
       textBold: 'lato-bold',
-      textAccent: 'lato-bold',
     ));

@@ -24,11 +24,9 @@ class AppFonts {
     required this.display,
     required this.text,
     required this.textBold,
-    required this.textAccent,
   });
   String title;
   String display;
   String text;
   String textBold;
-  String textAccent;
 }

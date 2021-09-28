@@ -161,7 +161,7 @@ class _ModeloPages extends StatelessWidget {
                         style: TextStyle(
                           color: colorText,
                           fontSize: 15,
-                          fontFamily: tuficTheme.fonts.textAccent,
+                          fontFamily: tuficTheme.fonts.textBold,
                         )),
                   ),
                 ],
