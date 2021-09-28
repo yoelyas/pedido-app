@@ -14,12 +14,9 @@ class MenuCategoriasWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CategoryProvider categoryProvider = Provider.of<CategoryProvider>(context);
-    //String categoriaActual = categoryProvider.getSelected();
     final List<String> categories = [];
 
     final List<Widget> children = [];
-
-    //children.add(const SizedBox(width: 10));
     for (var i = 0; i < categorias.length; i++) {
       categories.add(categorias[i]);
       children.add(AutoScrollTag(
@@ -28,14 +25,13 @@ class MenuCategoriasWidget extends StatelessWidget {
           index: i,
           child: MenuCategoriaWidget(
               categoria: categorias[i], categoriaIndex: i)));
-      //children.add(const SizedBox(width: 50));
     }
     children.add(AutoScrollTag(
         key: const ValueKey("_fake"),
         controller: categoryProvider.getCategoriesScrollController(),
         index: categorias.length,
         child: SizedBox(
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery.of(context).size.width / 2,
         )));
 
     return SizedBox(

@@ -6,7 +6,7 @@ class CategoryProvider with ChangeNotifier {
   String _seletedCategory = '';
   List<String> categoryList = [];
 
-  final _catetoriesScrollController = AutoScrollController();
+  final _categoriesScrollController = AutoScrollController();
   final _productosScrollController = AutoScrollController();
 
   String getSelected() => _seletedCategory;
@@ -43,7 +43,7 @@ class CategoryProvider with ChangeNotifier {
   selectCategory(String category) {
     if (!isSelected(category)) {
       setSelectedCategory(category);
-      _catetoriesScrollController.scrollToIndex(getCategoryIndex(category),
+      _categoriesScrollController.scrollToIndex(getCategoryIndex(category),
           preferPosition: AutoScrollPosition.begin);
       //refreshView();
     }
@@ -56,10 +56,10 @@ class CategoryProvider with ChangeNotifier {
   void refreshView() => notifyListeners();
 
   AutoScrollController getCategoriesScrollController() =>
-      _catetoriesScrollController;
+      _categoriesScrollController;
   AutoScrollController getProductsScrollController() =>
       _productosScrollController;
 
-  /*Future scrollToIndex(int index) => _catetoriesScrollController
+  /*Future scrollToIndex(int index) => _categoriesScrollController
       .scrollToIndex(index, preferPosition: AutoScrollPosition.begin);*/
 }
