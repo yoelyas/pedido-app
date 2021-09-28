@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/pages/home_page.dart';
-import 'package:tufic_app/pages/pedidos_pages.dart';
+import 'package:tufic_app/pages/productos_pages.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/category_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';
@@ -41,7 +41,7 @@ class TuficApp extends StatelessWidget {
       initialRoute: 'home',
       routes: {
         'home': (_) => const HomePage(),
-        'pedidos': (_) => const PedidosPage(),
+        'productos': (_) => const ProductosPage(),
       },
     );
   }

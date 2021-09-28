@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/services/category_provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 class MenuCategoriasWidget extends StatelessWidget {
   final List<String> categorias;
@@ -13,19 +14,34 @@ class MenuCategoriasWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CategoryProvider categoryProvider = Provider.of<CategoryProvider>(context);
-    String categoriaActual = categoryProvider.getCategory();
-    if (categoriaActual.isEmpty && categorias.isNotEmpty) {
-      categoryProvider.setCategory(categorias[0]);
-    }
+    //String categoriaActual = categoryProvider.getSelected();
+    final List<String> categories = [];
+
     final List<Widget> children = [];
+
     //children.add(const SizedBox(width: 10));
-    for (var categoria in categorias) {
-      children.add(MenuCategoriaWidget(categoria: categoria));
+    for (var i = 0; i < categorias.length; i++) {
+      categories.add(categorias[i]);
+      children.add(AutoScrollTag(
+          key: ValueKey(categorias[i]),
+          controller: categoryProvider.getCategoriesScrollController(),
+          index: i,
+          child: MenuCategoriaWidget(
+              categoria: categorias[i], categoriaIndex: i)));
       //children.add(const SizedBox(width: 50));
     }
+    children.add(AutoScrollTag(
+        key: const ValueKey("_fake"),
+        controller: categoryProvider.getCategoriesScrollController(),
+        index: categorias.length,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+        )));
+
     return SizedBox(
         height: 30,
         child: ListView(
+          controller: categoryProvider.getCategoriesScrollController(),
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           children: children,
@@ -35,9 +51,11 @@ class MenuCategoriasWidget extends StatelessWidget {
 
 class MenuCategoriaWidget extends StatelessWidget {
   final String categoria;
+  final int categoriaIndex;
   // ignore: use_key_in_widget_constructors
   const MenuCategoriaWidget({
     required this.categoria,
+    required this.categoriaIndex,
   });
 
   @override
@@ -56,8 +74,7 @@ class MenuCategoriaWidget extends StatelessWidget {
                   width: 2))),
       child: GestureDetector(
           onTap: () {
-            categoryProvider.setCategory(categoria);
-            categoryProvider.refreshView();
+            categoryProvider.selectCategory(categoria);
           },
           child: Text(
             '${categoria[0].toUpperCase()}${categoria.substring(1)}',

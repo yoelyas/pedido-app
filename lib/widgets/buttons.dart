@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/pages/pedidos_pages.dart';
+import 'package:tufic_app/pages/productos_pages.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
 
 class BottomSucursal extends StatelessWidget {
@@ -43,7 +43,7 @@ class BottomSucursal extends StatelessWidget {
       ),
       onPressed: () {
         cartProvider.initializate(text);
-        Navigator.pushReplacementNamed(context, PedidosPage.routeName);
+        Navigator.pushReplacementNamed(context, ProductosPage.routeName);
       },
     );
   }

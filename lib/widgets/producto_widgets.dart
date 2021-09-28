@@ -1,7 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
+
+class ProductListPage extends StatelessWidget {
+  final List<ProductListItem> productList;
+  final List<String> categorias;
+  // ignore: use_key_in_widget_constructors
+  const ProductListPage({
+    required this.productList,
+    required this.categorias,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> children = [];
+
+    for (var category in categorias) {
+      children.add(SizedBox(
+        width: 280,
+        child: Text(category,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+              fontFamily: tuficTheme.fonts.textBold,
+            )),
+      ));
+      for (var productListItem in productList) {
+        if (category == productListItem.category) {
+          children.add(Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductoPages(productListItem: productListItem),
+          ));
+        }
+      }
+    }
+    return Column(
+      children: children,
+    );
+  }
+}
+
+class ProductoPages extends StatelessWidget {
+  final ProductListItem productListItem;
+
+  // ignore: use_key_in_widget_constructors
+  const ProductoPages({
+    required this.productListItem,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _ModeloPages(
+      productListItem: productListItem,
+      color: tuficTheme.primary,
+      colorText: Colors.white,
+    );
+  }
+}
 
 class _ModeloPages extends StatelessWidget {
   final ProductListItem productListItem;
@@ -121,140 +176,5 @@ class _ModeloPages extends StatelessWidget {
           ));*/
           //Navigator.pushReplacementNamed(context, MenuPage.routeName);
         });
-  }
-}
-
-class PromosPages extends StatelessWidget {
-  final ProductListItem productListItem;
-
-  // ignore: use_key_in_widget_constructors
-  const PromosPages({
-    required this.productListItem,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return _ModeloPages(
-      productListItem: productListItem,
-      color: tuficTheme.primary,
-      colorText: Colors.white,
-    );
-  }
-}
-
-class ProductoPages extends StatelessWidget {
-  final ProductListItem productListItem;
-
-  // ignore: use_key_in_widget_constructors
-  const ProductoPages({
-    required this.productListItem,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return _ModeloPages(
-      productListItem: productListItem,
-      color: Colors.white,
-      colorText: Colors.black,
-    );
-  }
-}
-
-class ProductListPage extends StatelessWidget {
-  final List<ProductListItem> productList;
-  // ignore: use_key_in_widget_constructors
-  const ProductListPage({
-    required this.productList,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final List<Widget> children = [];
-    for (var productListItem in productList) {
-      children.add(ProductoPages(productListItem: productListItem));
-      children.add(
-        const SizedBox(
-          height: 15,
-        ),
-      );
-    }
-    return Column(
-      children: children,
-    );
-  }
-}
-
-class ProductoSimplificado extends StatelessWidget {
-  final ProductListItem productListItem;
-
-  // ignore: use_key_in_widget_constructors
-  const ProductoSimplificado({
-    required this.productListItem,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    double precio = productListItem.price;
-    double ancho = 200;
-    double alto = 300;
-
-    return SizedBox(
-      height: alto * 0.3,
-      width: ancho * 0.9,
-      child: Row(
-        children: [
-          Container(
-            color: Colors.white,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Align(
-                heightFactor: alto * 0.0018,
-                widthFactor: ancho * 0.0018,
-                child: Image.network(productListItem.image),
-              ),
-            ),
-          ),
-          SizedBox(
-            width: ancho * 0.1,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: ancho * 0.5,
-                child: Text(productListItem.title,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: alto * 0.04,
-                      fontFamily: tuficTheme.fonts.title,
-                    )),
-              ),
-              SizedBox(
-                width: ancho * 0.5,
-                child: Text(productListItem.text,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: alto * 0.04,
-                      fontFamily: tuficTheme.fonts.text,
-                    )),
-              ),
-              SizedBox(
-                width: ancho * 0.5,
-                child: Text('\$$precio',
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: alto * 0.05,
-                      fontFamily: tuficTheme.fonts.title,
-                    )),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
   }
 }
