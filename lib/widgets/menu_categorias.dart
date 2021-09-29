@@ -26,19 +26,13 @@ class MenuCategoriasWidget extends StatelessWidget {
           child: MenuCategoriaWidget(
               categoria: categorias[i], categoriaIndex: i)));
     }
-    children.add(AutoScrollTag(
-        key: const ValueKey("_fake"),
-        controller: categoryProvider.getCategoriesScrollController(),
-        index: categorias.length,
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width / 2,
-        )));
 
     return SizedBox(
         height: 30,
         child: ListView(
+          cacheExtent: double.infinity,
           controller: categoryProvider.getCategoriesScrollController(),
-          physics: const BouncingScrollPhysics(),
+          //physics: const AlwaysScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           children: children,
         ));

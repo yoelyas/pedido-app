@@ -32,6 +32,32 @@
             ]
         },
         {
+            "id": "f6",
+            "title": "1/4 kilo de helado",
+            "text": "Elegi hasta 2 de nuestros más\nricos sabores ",
+            "price": 1300.00,
+            "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
+            "stock": -1,
+            "onlyCash": false,
+            "category": "Helado",
+            "tags": [
+                "helado"
+            ]
+        },
+        {
+            "id": "f6",
+            "title": "1/4 kilo de helado",
+            "text": "Elegi hasta 2 de nuestros más\nricos sabores ",
+            "price": 1300.00,
+            "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
+            "stock": -1,
+            "onlyCash": false,
+            "category": "Helado",
+            "tags": [
+                "helado"
+            ]
+        },
+        {
             "id": "a1",
             "title": "Hot sale",
             "text": "gustos a eleccion. Solo en efectivo.",
