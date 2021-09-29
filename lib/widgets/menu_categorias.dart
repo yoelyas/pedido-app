@@ -32,7 +32,6 @@ class MenuCategoriasWidget extends StatelessWidget {
         child: ListView(
           cacheExtent: double.infinity,
           controller: categoryProvider.getCategoriesScrollController(),
-          //physics: const AlwaysScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           children: children,
         ));

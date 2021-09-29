@@ -53,8 +53,6 @@ class ProductListPage extends StatelessWidget {
       child: ListView(
         cacheExtent: double.infinity,
         controller: categoryProvider.getProductsScrollController(),
-        //physics: const BouncingScrollPhysics(),
-        //scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.all(8),
         children: children,
       ),
