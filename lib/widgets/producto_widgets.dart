@@ -4,6 +4,7 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
 import 'package:tufic_app/services/category_provider.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class ProductListPage extends StatelessWidget {
   final List<ProductListItem> productList;
@@ -45,9 +46,17 @@ class ProductListPage extends StatelessWidget {
           key: ValueKey(categorias[i]),
           controller: categoryProvider.getProductsScrollController(),
           index: i,
-          child: Column(
-            children: categories,
-          )));
+          child: VisibilityDetector(
+              key: Key(categorias[i]),
+              onVisibilityChanged: (visibilityInfo) {
+                categoryProvider.onScroll(
+                    categorias[i], visibilityInfo.visibleFraction * 100);
+                // pasarle a category provider (categorias[i], visibilityInfo.visibleFraction * 100)
+                //var visiblePercentage = visibilityInfo.visibleFraction * 100;
+              },
+              child: Column(
+                children: categories,
+              ))));
     }
     return Expanded(
       child: ListView(
@@ -72,8 +81,8 @@ class ProductoPages extends StatelessWidget {
   Widget build(BuildContext context) {
     return _ModeloPages(
       productListItem: productListItem,
-      color: tuficTheme.primary,
-      colorText: Colors.white,
+      color: Colors.white,
+      colorText: Colors.black,
     );
   }
 }
@@ -92,7 +101,14 @@ class _ModeloPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CategoryProvider categoryProvider = Provider.of<CategoryProvider>(context);
     double precio = productListItem.price;
+    Color color2 = categoryProvider.isSelected(productListItem.category)
+        ? tuficTheme.primary
+        : Colors.white;
+    Color colorText2 = categoryProvider.isSelected(productListItem.category)
+        ? Colors.white
+        : Colors.black;
 
     //final productoProvider = Provider.of<ProductosProvider>(context);
     // final seleccionProvider = Provider.of<SeleccionProvider>(context);
@@ -101,7 +117,7 @@ class _ModeloPages extends StatelessWidget {
 
     return TextButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(color),
+          backgroundColor: MaterialStateProperty.all<Color>(color2),
           shape: MaterialStateProperty.all<OutlinedBorder>(
               const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -152,7 +168,7 @@ class _ModeloPages extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           //color: tuficTheme.secondary,
-                          color: colorText,
+                          color: colorText2,
                           fontSize: 12,
                           fontFamily: tuficTheme.fonts.textBold,
                         )),
@@ -166,7 +182,7 @@ class _ModeloPages extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           //color: tuficTheme.primary,
-                          color: colorText,
+                          color: colorText2,
                           fontSize: 10,
                           fontFamily: tuficTheme.fonts.text,
                         )),
@@ -179,7 +195,7 @@ class _ModeloPages extends StatelessWidget {
                     child: Text('\$$precio',
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: colorText,
+                          color: colorText2,
                           fontSize: 15,
                           fontFamily: tuficTheme.fonts.textBold,
                         )),

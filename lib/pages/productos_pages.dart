@@ -1,12 +1,16 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/components/main_app_bar.dart';
 import 'package:tufic_app/const/config.dart';
+import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/category_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';
+import 'package:tufic_app/services/search_provider.dart';
 import 'package:tufic_app/widgets/barra_de_busqueda.dart';
 import 'package:tufic_app/widgets/menu_categorias.dart';
 import 'package:tufic_app/widgets/producto_widgets.dart';
@@ -60,14 +64,19 @@ class Productos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CategoryProvider categoryProvider = Provider.of<CategoryProvider>(context);
+    SearchProvider searchProvider = Provider.of<SearchProvider>(context);
+
+    // filtrar segun
+    List<ProductListItem> productosFiltered = searchProvider.filter(productos);
+
     List<String> categorias = [];
-    for (var item in productos) {
+    for (var item in productosFiltered) {
       if (!categorias.contains(item.category)) {
         categorias.add(item.category);
       }
     }
     categoryProvider.setCategoryList(categorias);
-    if (categoryProvider.getSelected().isEmpty) {
+    if (categorias.isNotEmpty && categoryProvider.getSelected().isEmpty) {
       categoryProvider.setSelectedCategory(categorias[0]);
     }
 
@@ -75,20 +84,75 @@ class Productos extends StatelessWidget {
       categorias: categorias,
     );
 
-    return Column(children: [
-      Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: SearchBar.build(context),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: menuCategoriasWidget.build(context),
-      ),
-      ProductListPage(productList: productos, categorias: categorias),
-    ]);
+//gestureDetector + FocusScope para cerrar el teclado cuando se hace click fuera de la caja de texto
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Column(children: [
+        Padding(
+          padding: EdgeInsets.all(6.0),
+          child: MySearchForm(),
+          //child: SearchBar.build(context),
+        ),
+        productosFiltered.isEmpty
+            ? widgetSinResultados(context, searchProvider)
+            : Expanded(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: menuCategoriasWidget.build(context),
+                    ),
+                    ProductListPage(
+                        productList: productosFiltered, categorias: categorias),
+                  ],
+                ),
+              )
+      ]),
+    );
   }
-}
 
-Widget barraDeElecciones(BuildContext context) {
-  return Container();
+  widgetSinResultados(BuildContext context, SearchProvider searchProvider) {
+    return Expanded(
+      child: ListView(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade400,
+              shape: BoxShape.circle,
+            ),
+            width: 190,
+            height: 190,
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 12,
+                ),
+                Icon(
+                  Icons.search_off,
+                  size: 90,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                    "No se encontraron coincidencias\n para tu búsqueda.", //cartProvider.getStore(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontFamily: tuficTheme.fonts.text,
+                    ),
+                    textAlign: TextAlign.center),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

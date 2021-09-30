@@ -5,6 +5,10 @@ class CategoryProvider with ChangeNotifier {
   /// La categoria puede seleccionarse desde el menu categorias o desde menu de productos
   String _seletedCategory = '';
   List<String> categoryList = [];
+  Map<String, double> categoryVisibility = {};
+
+  /// bandera de control de scroll cruzado entre categorias y productos
+  bool scrolling = false;
 
   final _categoriesScrollController = AutoScrollController();
   final _productosScrollController = AutoScrollController();
@@ -17,6 +21,10 @@ class CategoryProvider with ChangeNotifier {
 
   setCategoryList(List<String> categoryList) {
     this.categoryList = categoryList;
+    categoryVisibility = {};
+    for (var item in categoryList) {
+      categoryVisibility[item] = 0;
+    }
   }
 
   List<String> getCategoryList() {
@@ -41,11 +49,12 @@ class CategoryProvider with ChangeNotifier {
   }
 
   selectCategory(String category) {
-    if (!isSelected(category)) {
+    if (categoryList.contains(category)) {
+      scrolling = true;
       setSelectedCategory(category);
       getCategoriesScrollController().scrollToIndex(getCategoryIndex(category),
           preferPosition: AutoScrollPosition.begin);
-      //refreshView();
+
       getProductsScrollController().scrollToIndex(getCategoryIndex(category),
           preferPosition: AutoScrollPosition.begin);
     }
@@ -62,6 +71,98 @@ class CategoryProvider with ChangeNotifier {
   AutoScrollController getProductsScrollController() =>
       _productosScrollController;
 
-  /*Future scrollToIndex(int index) => _categoriesScrollController
-      .scrollToIndex(index, preferPosition: AutoScrollPosition.begin);*/
+  void _selectCategoryAlt(int indexCategory, String category) {
+    if (!isSelected(category)) {
+      setSelectedCategory(category);
+      getCategoriesScrollController().scrollToIndex(indexCategory,
+          preferPosition: AutoScrollPosition.begin);
+    }
+  }
+
+/*
+  void onScroll2(String category, double visibility) {
+    categoryVisibility[category] = visibility;
+
+    if (scrolling) {
+      if (categoryVisibility[getSelected()]! > 0) {
+        scrolling = false;
+      }
+    } else if (!isSelected(category)) {
+      for (var index = 0; index < categoryList.length; index++) {
+        if (index == 0 && categoryVisibility[getCategoryByIndex(index)]! > 0) {
+          // la primera
+          _selectCategoryAlt(index, getCategoryByIndex(index));
+        } else if (0 < index &&
+            index < (categoryList.length - 1) &&
+            categoryVisibility[getCategoryByIndex(index)]! > 0 &&
+            categoryVisibility[getCategoryByIndex(index - 1)]! <= 1) {
+          // del medio
+          _selectCategoryAlt(index, getCategoryByIndex(index));
+        } else if (index == (categoryList.length - 1) &&
+            categoryVisibility[getCategoryByIndex(index)]! >= 99) {
+          // ultima
+          _selectCategoryAlt(index, getCategoryByIndex(index));
+        }
+      }
+    }
+  }*/
+
+  void onScroll(String category, double visibility) {
+    categoryVisibility[category] = visibility;
+    var index = 0;
+
+    if (scrolling) {
+      if (categoryVisibility[getSelected()]! > 0) {
+        scrolling = false;
+      }
+    } else if (!isSelected(category)) {
+      dynamic position = getProductsScrollController().position;
+      if (getProductsScrollController().offset.toStringAsFixed(0) ==
+          position.maxScrollExtent.toStringAsFixed(0)) {
+        return;
+      } else if (categoryVisibility[
+              getCategoryByIndex(categoryList.length - 1)]! >=
+          99) {
+        // ultima
+        _selectCategoryAlt(categoryList.length - 1,
+            getCategoryByIndex(categoryList.length - 1));
+      } else {
+        bool flag = true;
+
+        for (var i = 0; i < categoryList.length; i++) {
+          if (categoryVisibility[getCategoryByIndex(i)]! > 0 && flag) {
+            flag = false;
+            index = i;
+          }
+        }
+        _selectCategoryAlt(index, getCategoryByIndex(index));
+      }
+    }
+  }
 }
+/*void onScroll(String category, double visibility) {
+    categoryVisibility[category] = visibility;
+    var index = 0;
+
+    if (scrolling) {
+      if (categoryVisibility[getSelected()]! > 0) {
+        scrolling = false;
+      }
+    } else if (!isSelected(category)) {
+      if (categoryVisibility[getCategoryByIndex(categoryList.length - 1)]! >=
+          99) {
+        // ultima
+        _selectCategoryAlt(categoryList.length - 1,
+            getCategoryByIndex(categoryList.length - 1));
+      } else {
+        bool flag = true;
+        for (var i = 0; i < categoryList.length; i++) {
+          if (categoryVisibility[getCategoryByIndex(i)]! > 0 && flag) {
+            flag = false;
+            index = i;
+          }
+        }
+        _selectCategoryAlt(index, getCategoryByIndex(index));
+      }
+    }
+  }*/

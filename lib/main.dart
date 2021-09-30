@@ -5,6 +5,7 @@ import 'package:tufic_app/pages/productos_pages.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/category_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';
+import 'package:tufic_app/services/search_provider.dart';
 
 void main() => runApp(const AppState());
 
@@ -23,6 +24,9 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ProductosProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SearchProvider(),
         ),
       ],
       child: const TuficApp(),
