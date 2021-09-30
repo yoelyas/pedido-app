@@ -101,14 +101,7 @@ class _ModeloPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CategoryProvider categoryProvider = Provider.of<CategoryProvider>(context);
     double precio = productListItem.price;
-    Color color2 = categoryProvider.isSelected(productListItem.category)
-        ? tuficTheme.primary
-        : Colors.white;
-    Color colorText2 = categoryProvider.isSelected(productListItem.category)
-        ? Colors.white
-        : Colors.black;
 
     //final productoProvider = Provider.of<ProductosProvider>(context);
     // final seleccionProvider = Provider.of<SeleccionProvider>(context);
@@ -117,7 +110,7 @@ class _ModeloPages extends StatelessWidget {
 
     return TextButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(color2),
+          backgroundColor: MaterialStateProperty.all<Color>(color),
           shape: MaterialStateProperty.all<OutlinedBorder>(
               const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -168,7 +161,7 @@ class _ModeloPages extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           //color: tuficTheme.secondary,
-                          color: colorText2,
+                          color: colorText,
                           fontSize: 12,
                           fontFamily: tuficTheme.fonts.textBold,
                         )),
@@ -182,7 +175,7 @@ class _ModeloPages extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           //color: tuficTheme.primary,
-                          color: colorText2,
+                          color: colorText,
                           fontSize: 10,
                           fontFamily: tuficTheme.fonts.text,
                         )),
@@ -195,7 +188,7 @@ class _ModeloPages extends StatelessWidget {
                     child: Text('\$$precio',
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: colorText2,
+                          color: colorText,
                           fontSize: 15,
                           fontFamily: tuficTheme.fonts.textBold,
                         )),
