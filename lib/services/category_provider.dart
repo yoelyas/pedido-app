@@ -79,8 +79,7 @@ class CategoryProvider with ChangeNotifier {
     }
   }
 
-/*
-  void onScroll2(String category, double visibility) {
+  void onScroll(String category, double visibility) {
     categoryVisibility[category] = visibility;
 
     if (scrolling) {
@@ -105,64 +104,5 @@ class CategoryProvider with ChangeNotifier {
         }
       }
     }
-  }*/
-
-  void onScroll(String category, double visibility) {
-    categoryVisibility[category] = visibility;
-    var index = 0;
-
-    if (scrolling) {
-      if (categoryVisibility[getSelected()]! > 0) {
-        scrolling = false;
-      }
-    } else if (!isSelected(category)) {
-      dynamic position = getProductsScrollController().position;
-      if (getProductsScrollController().offset.toStringAsFixed(0) ==
-          position.maxScrollExtent.toStringAsFixed(0)) {
-        return;
-      } else if (categoryVisibility[
-              getCategoryByIndex(categoryList.length - 1)]! >=
-          99) {
-        // ultima
-        _selectCategoryAlt(categoryList.length - 1,
-            getCategoryByIndex(categoryList.length - 1));
-      } else {
-        bool flag = true;
-
-        for (var i = 0; i < categoryList.length; i++) {
-          if (categoryVisibility[getCategoryByIndex(i)]! > 0 && flag) {
-            flag = false;
-            index = i;
-          }
-        }
-        _selectCategoryAlt(index, getCategoryByIndex(index));
-      }
-    }
   }
 }
-/*void onScroll(String category, double visibility) {
-    categoryVisibility[category] = visibility;
-    var index = 0;
-
-    if (scrolling) {
-      if (categoryVisibility[getSelected()]! > 0) {
-        scrolling = false;
-      }
-    } else if (!isSelected(category)) {
-      if (categoryVisibility[getCategoryByIndex(categoryList.length - 1)]! >=
-          99) {
-        // ultima
-        _selectCategoryAlt(categoryList.length - 1,
-            getCategoryByIndex(categoryList.length - 1));
-      } else {
-        bool flag = true;
-        for (var i = 0; i < categoryList.length; i++) {
-          if (categoryVisibility[getCategoryByIndex(i)]! > 0 && flag) {
-            flag = false;
-            index = i;
-          }
-        }
-        _selectCategoryAlt(index, getCategoryByIndex(index));
-      }
-    }
-  }*/
