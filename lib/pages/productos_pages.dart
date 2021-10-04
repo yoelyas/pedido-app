@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +21,7 @@ class ProductosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print("Soy ProductosPage y me estoy redibujando");
     final cartProvider = Provider.of<CartProvider>(context);
     final mainAppBar = MainAppBar(
         context: context,
@@ -29,18 +29,22 @@ class ProductosPage extends StatelessWidget {
         store: cartProvider.getStore());
 
     return Scaffold(
-      appBar: mainAppBar.getWidget(),
-      drawer: SideBarMenu(context: context),
-      //backgroundColor: Colors.white,
-      body: _buildProductList(context),
-    );
+        appBar: mainAppBar.getWidget(),
+        drawer: SideBarMenu(context: context),
+        backgroundColor: Colors.white,
+        body: buildProductList(context) //(context),
+        );
   }
 
-  Widget _buildProductList(BuildContext context) {
+  Widget buildProductList(BuildContext context) {
     final productosProvider = Provider.of<ProductosProvider>(context);
 
+    final Future<List<ProductListItem>> _calculation =
+        Future<List<ProductListItem>>.delayed(const Duration(seconds: 3),
+            () => productosProvider.getProductList());
+
     return FutureBuilder(
-      future: productosProvider.getProductList(),
+      future: _calculation,
       builder: (context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
           return Productos(snapshot.data as List<ProductListItem>);
@@ -75,7 +79,20 @@ class Productos extends StatelessWidget {
         categorias.add(item.category);
       }
     }
-    categoryProvider.setCategoryList(categorias);
+
+    // Comparar listas de categorias antes de setear, solo setear si son distintas
+    if (categorias.isNotEmpty) {
+      for (var category in categoryProvider.getCategoryList()) {
+        if (!categorias.contains(category)) {
+          categoryProvider.setCategoryVisibility(category, 0);
+        }
+      }
+      categoryProvider.setCategoryList(categorias);
+    } else {
+      categoryProvider.resetVisibility();
+      categoryProvider.setCategoryList(categorias);
+    }
+
     if (categorias.isNotEmpty && categoryProvider.getSelected().isEmpty) {
       categoryProvider.setSelectedCategory(categorias[0]);
     }

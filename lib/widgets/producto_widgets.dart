@@ -49,7 +49,7 @@ class ProductListPage extends StatelessWidget {
           child: VisibilityDetector(
               key: Key(categorias[i]),
               onVisibilityChanged: (visibilityInfo) {
-                categoryProvider.onScroll(
+                categoryProvider.setCategoryVisibility(
                     categorias[i], visibilityInfo.visibleFraction * 100);
                 // pasarle a category provider (categorias[i], visibilityInfo.visibleFraction * 100)
                 //var visiblePercentage = visibilityInfo.visibleFraction * 100;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/services/category_provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:tufic_app/services/category_provider.dart';
 
 class MenuCategoriasWidget extends StatelessWidget {
   final List<String> categorias;
@@ -63,7 +63,7 @@ class MenuCategoriaWidget extends StatelessWidget {
                   width: 2))),
       child: GestureDetector(
           onTap: () {
-            categoryProvider.selectCategory(categoria);
+            categoryProvider.goToCategory(categoria);
           },
           child: Text(
             '${categoria[0].toUpperCase()}${categoria.substring(1)}',

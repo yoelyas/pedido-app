@@ -1,41 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:throttling/throttling.dart';
 
 class CategoryProvider with ChangeNotifier {
-  /// La categoria puede seleccionarse desde el menu categorias o desde menu de productos
-  String _seletedCategory = '';
+  String _selectedCategory = '';
   List<String> categoryList = [];
-  Map<String, double> categoryVisibility = {};
-
-  /// bandera de control de scroll cruzado entre categorias y productos
-  bool scrolling = false;
+  Map<String, int> categoryVisibility = {};
 
   final _categoriesScrollController = AutoScrollController();
-  final _productosScrollController = AutoScrollController();
+  final _productsScrollController = AutoScrollController();
 
-  String getSelected() => _seletedCategory;
+  final _debouncer = Debouncing(duration: const Duration(milliseconds: 500));
+
+  CategoryProvider() {
+    _productsScrollController.addListener(() {
+      _debouncer.debounce(() {
+        asyncSelectCategory();
+      });
+    });
+  }
+
+  String getSelected() => _selectedCategory;
+  List<String> getCategoryList() => categoryList;
+  String getCategoryByIndex(int index) => categoryList[index];
+
+  bool isSelected(String category) => (category == _selectedCategory);
 
   void setSelectedCategory(String category) {
-    _seletedCategory = category;
+    _selectedCategory = category;
   }
 
   setCategoryList(List<String> categoryList) {
     this.categoryList = categoryList;
+  }
+
+  resetVisibility() {
     categoryVisibility = {};
     for (var item in categoryList) {
       categoryVisibility[item] = 0;
     }
-  }
-
-  List<String> getCategoryList() {
-    return categoryList;
-  }
-
-  String getCategoryByIndex(int index) {
-    if (index >= categoryList.length) {
-      return "";
-    }
-    return categoryList[index];
   }
 
   int getCategoryIndex(String category) {
@@ -44,65 +47,76 @@ class CategoryProvider with ChangeNotifier {
         return i;
       }
     }
-    //debuelvo negativo para asegurar que si no esta no tome ningun valor
-    return -1;
+
+    return 0;
   }
 
-  selectCategory(String category) {
-    if (categoryList.contains(category)) {
-      scrolling = true;
-      setSelectedCategory(category);
-      getCategoriesScrollController().scrollToIndex(getCategoryIndex(category),
-          preferPosition: AutoScrollPosition.begin);
+  goToCategory(String category) {
+    setSelectedCategory(category);
+    notifyListeners();
 
-      getProductsScrollController().scrollToIndex(getCategoryIndex(category),
-          preferPosition: AutoScrollPosition.begin);
-    }
+    _categoriesScrollController.scrollToIndex(getCategoryIndex(category),
+        preferPosition: AutoScrollPosition.begin);
+
+    _productsScrollController.scrollToIndex(getCategoryIndex(category),
+        preferPosition: AutoScrollPosition.begin);
   }
-
-  bool isSelected(String category) {
-    return category == _seletedCategory;
-  }
-
-  void refreshView() => notifyListeners();
 
   AutoScrollController getCategoriesScrollController() =>
       _categoriesScrollController;
   AutoScrollController getProductsScrollController() =>
-      _productosScrollController;
+      _productsScrollController;
 
-  void _selectCategoryAlt(int indexCategory, String category) {
-    if (!isSelected(category)) {
+  /*
+  void onScroll() {
+    if (!_categoriesScrollController.isAutoScrolling) {
+      int index = 0; // por defecto, primer cat seleccionada
+      for (var i = 0; i < categoryList.length; i++) {
+        if (categoryVisibility[getCategoryByIndex(i)]! > 0) {
+          index = i;
+          break;
+        }
+      }
+      print(categoryVisibility);
+      asyncSelectCategory(getCategoryByIndex(index));
+    }
+  }
+  */
+
+  void asyncSelectCategory() {
+    // por defecto, primer cat seleccionada
+    int index = 0;
+    dynamic scrollController = getProductsScrollController();
+    String maxScrollExtent =
+        scrollController.position.maxScrollExtent.toStringAsFixed(0);
+    String offset = scrollController.offset.toStringAsFixed(0);
+    bool isScrollEnd = (offset == maxScrollExtent);
+    if (isScrollEnd && categoryVisibility[getSelected()]! > 0) {
+      index = getCategoryIndex(getSelected());
+    } else if (isScrollEnd && categoryVisibility[getSelected()]! == 0) {
+      index = getCategoryList().length - 1;
+    } else {
+      for (var i = 0; i < categoryList.length; i++) {
+        if (categoryVisibility[getCategoryByIndex(i)]! > 0) {
+          index = i;
+          break;
+        }
+      }
+    }
+
+    String category = getCategoryByIndex(index);
+
+    if (!isSelected(getCategoryByIndex(index))) {
       setSelectedCategory(category);
-      getCategoriesScrollController().scrollToIndex(indexCategory,
+      notifyListeners();
+      _categoriesScrollController.scrollToIndex(getCategoryIndex(category),
           preferPosition: AutoScrollPosition.begin);
     }
   }
 
-  void onScroll(String category, double visibility) {
-    categoryVisibility[category] = visibility;
-
-    if (scrolling) {
-      if (categoryVisibility[getSelected()]! > 0) {
-        scrolling = false;
-      }
-    } else if (!isSelected(category)) {
-      for (var index = 0; index < categoryList.length; index++) {
-        if (index == 0 && categoryVisibility[getCategoryByIndex(index)]! > 0) {
-          // la primera
-          _selectCategoryAlt(index, getCategoryByIndex(index));
-        } else if (0 < index &&
-            index < (categoryList.length - 1) &&
-            categoryVisibility[getCategoryByIndex(index)]! > 0 &&
-            categoryVisibility[getCategoryByIndex(index - 1)]! <= 1) {
-          // del medio
-          _selectCategoryAlt(index, getCategoryByIndex(index));
-        } else if (index == (categoryList.length - 1) &&
-            categoryVisibility[getCategoryByIndex(index)]! >= 99) {
-          // ultima
-          _selectCategoryAlt(index, getCategoryByIndex(index));
-        }
-      }
-    }
+  void setCategoryVisibility(String category, double visibility) {
+    // print(category + ' => ' + visibility.round().toString());
+    categoryVisibility[category] = visibility.floor();
+    //asyncSelectCategory(category);
   }
 }

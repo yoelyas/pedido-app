@@ -9,7 +9,16 @@ class SearchProvider with ChangeNotifier {
     if (busqueda.isEmpty) return productList;
     List<ProductListItem> filtered = [];
     for (var element in productList) {
-      if (element.category == getSearch()) filtered.add(element);
+      if (element.category.toLowerCase().contains(getSearch().toLowerCase()) ||
+          element.text.toLowerCase().contains(getSearch().toLowerCase()) ||
+          element.title.toLowerCase().contains(getSearch().toLowerCase()) ||
+          element.tags.contains(getSearch().toLowerCase()) ||
+          element.price.toString().contains(getSearch().toLowerCase())) {
+        filtered.add(element);
+      }
+
+      //.toLowerCase().contains(getSearch().toLowerCase()))
+
     }
     return filtered;
   }
