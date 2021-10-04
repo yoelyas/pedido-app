@@ -29,7 +29,7 @@ class ProductosPage extends StatelessWidget {
         store: cartProvider.getStore());
 
     return Scaffold(
-        appBar: mainAppBar.getWidget(),
+        appBar: mainAppBar.getWidget(false),
         drawer: SideBarMenu(context: context),
         backgroundColor: Colors.white,
         body: buildProductList(context) //(context),

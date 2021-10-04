@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/pages/home_page.dart';
+import 'package:tufic_app/pages/menu_producto_pages.dart';
 import 'package:tufic_app/pages/productos_pages.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/category_provider.dart';
+import 'package:tufic_app/services/producto_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';
 import 'package:tufic_app/services/search_provider.dart';
+import 'package:tufic_app/services/seleccion_provider.dart';
 
 void main() => runApp(const AppState());
 
@@ -28,6 +31,12 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => SearchProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => ProductoProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SeleccionProvider(),
+        ),
       ],
       child: const TuficApp(),
     );
@@ -46,6 +55,7 @@ class TuficApp extends StatelessWidget {
       routes: {
         'home': (_) => const HomePage(),
         'productos': (_) => const ProductosPage(),
+        'menuProducto': (_) => const MenuProductoPages(),
       },
     );
   }

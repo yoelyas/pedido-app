@@ -3,7 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
+import 'package:tufic_app/pages/menu_producto_pages.dart';
+import 'package:tufic_app/seleccionwid/seleccionar_sabores.dart';
 import 'package:tufic_app/services/category_provider.dart';
+import 'package:tufic_app/services/producto_provider.dart';
+import 'package:tufic_app/services/seleccion_provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class ProductListPage extends StatelessWidget {
@@ -51,8 +55,6 @@ class ProductListPage extends StatelessWidget {
               onVisibilityChanged: (visibilityInfo) {
                 categoryProvider.setCategoryVisibility(
                     categorias[i], visibilityInfo.visibleFraction * 100);
-                // pasarle a category provider (categorias[i], visibilityInfo.visibleFraction * 100)
-                //var visiblePercentage = visibilityInfo.visibleFraction * 100;
               },
               child: Column(
                 children: categories,
@@ -101,6 +103,8 @@ class _ModeloPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productoProvider = Provider.of<ProductoProvider>(context);
+    final seleccionProvider = Provider.of<SeleccionProvider>(context);
     double precio = productListItem.price;
 
     //final productoProvider = Provider.of<ProductosProvider>(context);
@@ -199,11 +203,96 @@ class _ModeloPages extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          // productoProvider.initializate(productListItem);
-          /*seleccionProvider.initializate(SeleccionarSabores(
-            ancho: ancho,
-          ));*/
-          //Navigator.pushReplacementNamed(context, MenuPage.routeName);
+          productoProvider.initializate(productListItem);
+          seleccionProvider.initializate(SeleccionarSabores());
+          Navigator.pushNamed(context, MenuProductoPages.routeName);
         });
+  }
+}
+
+class ProductoMenu extends StatelessWidget {
+  final ProductListItem productListItem;
+
+  // ignore: use_key_in_widget_constructors
+  const ProductoMenu({
+    required this.productListItem,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final productoProvider = Provider.of<ProductoProvider>(context);
+    double precio = productListItem.price;
+
+    return SizedBox(
+      height: 70,
+      width: 280,
+      child: Row(
+        children: [
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            child: Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  productListItem.image,
+                  width: 55,
+                  height: 55,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 200,
+                child: Text(productListItem.title,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      //color: tuficTheme.secondary,
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontFamily: tuficTheme.fonts.textBold,
+                    )),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              SizedBox(
+                width: 200,
+                child: Text(productListItem.text,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      //color: tuficTheme.primary,
+                      color: Colors.black,
+                      fontSize: 10,
+                      fontFamily: tuficTheme.fonts.text,
+                    )),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              SizedBox(
+                width: 200,
+                child: Text('\$$precio',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontFamily: tuficTheme.fonts.textBold,
+                    )),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

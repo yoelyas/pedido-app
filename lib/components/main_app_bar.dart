@@ -28,7 +28,7 @@ class MainAppBar {
     //responsive.fit(xs: 12, xl: 20);
   }
 
-  AppBar getWidget() {
+  AppBar getWidget(bool backButtom) {
     List<Widget> column = [
       Image.asset(
         logo,
@@ -54,6 +54,11 @@ class MainAppBar {
     }
     return AppBar(
       elevation: 0,
+      leading: backButtom
+          ? IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(Icons.arrow_back_ios_new_outlined))
+          : null,
       toolbarHeight: 63, //_getHeightAppBar(),
       centerTitle: true,
       title:

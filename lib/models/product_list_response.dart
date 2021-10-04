@@ -22,6 +22,7 @@ class ProductListResponse {
 
   factory ProductListResponse.fromJson(String str) =>
       ProductListResponse.fromMap(json.decode(str));
+
   String toJson() => json.encode(toMap());
 
   factory ProductListResponse.fromMap(Map<String, dynamic> json) =>

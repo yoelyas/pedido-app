@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     final mainAppBar = MainAppBar(
         context: context, logo: APP_CONFIG['appBar']!['logo'], store: '');
     return Scaffold(
-      appBar: mainAppBar.getWidget(),
+      appBar: mainAppBar.getWidget(false),
       drawer: SideBarMenu(
         context: context,
       ),
