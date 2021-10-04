@@ -2,19 +2,19 @@
     "status_code": 200,
     "data": {
         "id": "d4",
-        "title": "1 kilo de helado",
+        "title": "yogurt 1/4 Kg",
         "text": "Elegi hasta 4 de nuestros más\nricos sabores ",
         "price": 1300.00,
-        "image": "https://static.tufic-helados.com/files/5e0d10adcc49b763c8af3788ce9631e2.jpg",
+        "image": "https://static.tufic-helados.com/img/index/yogurt/1.jpg",
         "stock": -1,
         "onlyCash": false,
         "tags": [
-            "Helados"
+            "yogurt"
         ],
         "products": [
             {
                 "id": "mp1",
-                "title": "Helado",
+                "title": "yogurt",
                 "stock": -1,
                 "length": 1,
                 "minLength": 1,
@@ -28,66 +28,32 @@
                         "maxLength": 4,
                         "maxLengthPerOption": 1,
                         "aditionalOffset": null,
-                        "pricePerAditional": 0.00,   
+                        "pricePerAditional": 0.00,
                         "msg": {
                             "empty": "No se seleccionaron sabores."
                         },
                         "options": [
                             {
                                 "id": "mp2",
-                                "title": "Chocolate",
+                                "title": "Natural",
                                 "description": "",
                                 "stock": -1
                             },
-                            {
-                                "id": "mp2",
-                                "title": "oreo",
-                                "description": "",
-                                "stock": -1
-                            },
-                            {
-                                "id": "mp2",
-                                "title": "Dulce de leche c/brounie",
-                                "description": "",
-                                "stock": -1
-                            },
-                            {
-                                "id": "mp2",
-                                "title": "Mascarpone",
-                                "description": "",
-                                "stock": -1
-                            },
-
                             {
                                 "id": "mp2",
                                 "title": "Frutilla",
                                 "description": "",
                                 "stock": -1
                             },
-
                             {
                                 "id": "mp2",
-                                "title": "Menta granizada",
+                                "title": "Dulce de leche",
                                 "description": "",
-                                "stock": -1
-                            },
-                            {
-                                "id": "mp2",
-                                "title": "Maracuya",
-                                "description": "",
-                                "stock": -1
-                            },
-
-                            {
-                                "id": "mp2",
-                                "title": "cafe",
-                                "description": "Especial para la temporada",
                                 "stock": -1
                             }
                             
                             
-                        ]
-                                          
+                        ]                     
                     },
                     {
                         "title": "Toppings",
@@ -127,7 +93,6 @@
                                 "price": 0.00
                             }
                         ]
-
                     }
                 ]
             }

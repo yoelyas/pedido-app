@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
+import 'package:tufic_app/pages/seleccionar_sabores_page.dart';
 
 class SeleccionarSabores extends StatelessWidget {
   @override
@@ -45,8 +46,8 @@ class SeleccionarSabores extends StatelessWidget {
             height: 30,
             width: 90,
             child: TextButton(
-              onPressed:
-                  () {}, //=> Navigator.pushNamed(context, SelecionPage.routeName),
+              onPressed: () => Navigator.pushNamed(
+                  context, SeleccionarSaboresPage.routeName),
               child: Text('Seleccionar',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

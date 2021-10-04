@@ -35,7 +35,7 @@ class MenuProductoPages extends StatelessWidget {
               // maxHeight: 500,
             ),
             child: ListView(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 _Contenido(),

@@ -1,53 +1,53 @@
 {
     "status_code": 200,
     "data": {
-        "id": "a1",
-        "title": "3x2 en alfajores Tufic",
-        "text": "gustos a eleccion.\nSolo en efectivo.",
-        "price": 700.00,
-        "image": "https://http2.mlstatic.com/D_NQ_NP_958433-MLA43350038693_092020-O.jpg",
+        "id": "b2",
+        "title": "Paleta chica",
+        "text": "Deliciosa paleta helada glaseada con trocitos de almendra",
+        "price": 500.00,
+        "image": "https://mui.kitchen/__export/1623008901224/sites/muikitchen/img/2021/06/06/shashi-charles-c6eovos7gxo-unsplash_x1x.jpg_1856877612.jpg",
         "stock": -1,
         "onlyCash": true,
         "tags": [
-            "Promos",
-            "Alfajores"
+            "Paletas"
         ],
         "products": [
             {
-                "id": "mp10",
-                "title": "Alfajores",
+                "id": "mp20",
+                "title": "Paletas",
                 "stock": -1,
-                "length": 1,
+                "length": null,
                 "minLength": 1,
-                "maxLength": 1,                
+                "maxLength": null,
                 "options": [
                     {
                         "title": "Sabores",
                         "button": "Seleccionar",
+                        "length": null,
                         "minLength": 3,
                         "maxLength": 3,
                         "maxLengthPerOption": null,
                         "aditionalOffset": null,
                         "pricePerAditional": 0.00,
                         "msg": {
-                            "empty": "No se seleccionaron alfajores."
+                            "empty": "No se seleccionaron Paletas."
                         },
                         "options": [
                             {
                                 "id": "mp11",
-                                "title": "Alfajor almendrado",
+                                "title": "Paleta almendrado",
                                 "description": "",
                                 "stock": -1
                             },
                             {
                                 "id": "mp12",
-                                "title": "Alfajor de dulce de leche",
+                                "title": "Paleta de dulce de leche",
                                 "description": "",
                                 "stock": -1
                             },
                             {
                                 "id": "mp12",
-                                "title": "Alfajor de chocolate",
+                                "title": "Paleta de chocolate",
                                 "description": "",
                                 "stock": -1
                             }

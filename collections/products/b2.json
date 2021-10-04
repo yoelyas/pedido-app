@@ -19,7 +19,41 @@
                 "length": null,
                 "minLength": 1,
                 "maxLength": null,
-                "options": []
+                "options": [
+                    {
+                        "title": "Sabores",
+                        "button": "Seleccionar",
+                        "length": null,
+                        "minLength": 3,
+                        "maxLength": 3,
+                        "maxLengthPerOption": null,
+                        "aditionalOffset": null,
+                        "pricePerAditional": 0.00,
+                        "msg": {
+                            "empty": "No se seleccionaron Paletas."
+                        },
+                        "options": [
+                            {
+                                "id": "mp11",
+                                "title": "Paleta almendrado",
+                                "description": "",
+                                "stock": -1
+                            },
+                            {
+                                "id": "mp12",
+                                "title": "Paleta de dulce de leche",
+                                "description": "",
+                                "stock": -1
+                            },
+                            {
+                                "id": "mp12",
+                                "title": "Paleta de chocolate",
+                                "description": "",
+                                "stock": -1
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

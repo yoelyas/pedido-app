@@ -23,7 +23,7 @@
             "title": "1/4 kilo de helado",
             "text": "Elegi hasta 2 de nuestros más\nricos sabores ",
             "price": 1300.00,
-            "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
+            "image": "https://static.tufic-helados.com/files/48a0b8fef9efe565edb1b82f7101f691.jpg",
             "stock": -1,
             "onlyCash": false,
             "category": "Helado",
@@ -47,10 +47,10 @@
         },
         {
             "id": "b2",
-            "title": "Paleta chica mascarpone",
+            "title": "Paleta chica",
             "text": "Deliciosa paleta helada glaseada con trocitos de almendra",
             "price": 500.00,
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/245px-Ice_Cream_dessert_02.jpg",
+            "image": "https://mui.kitchen/__export/1623008901224/sites/muikitchen/img/2021/06/06/shashi-charles-c6eovos7gxo-unsplash_x1x.jpg_1856877612.jpg",
             "stock": -1,
             "onlyCash": false,
             "category": "Paletas",
@@ -63,7 +63,7 @@
             "title": "Paleta grande",
             "text": "Deliciosa paleta helada glaseada con trocitos de almendra",
             "price": 800.00,
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/245px-Ice_Cream_dessert_02.jpg",
+            "image": "https://static.tufic-helados.com/files/de1b5c90aafea8e6107738bcf4814397.jpg",
             "stock": false,
             "onlyCash": false,
             "category": "Paletas",
@@ -73,10 +73,36 @@
         },
         {
             "id": "c3",
-            "title": "Postre",
+            "title": "Postre de almendra",
             "text": "Los mas ricos",
             "price": 500.00,
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/245px-Ice_Cream_dessert_02.jpg",
+            "image": "https://static.tufic-helados.com/files/a2df062e0915b5a1c07f849ce9a85003.jpg",
+            "stock": -1,
+            "onlyCash": false,
+            "category": "Postres",
+            "tags": [
+                "postre"
+            ]
+        },
+        {
+            "id": "c3",
+            "title": "Postre Bombon",
+            "text": "Los mas ricos",
+            "price": 500.00,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8M663_l-ccT7RNLQCpY2BJlfRvHWyWyx24A&usqp=CAU",
+            "stock": -1,
+            "onlyCash": false,
+            "category": "Postres",
+            "tags": [
+                "postre"
+            ]
+        },
+        {
+            "id": "c3",
+            "title": "Postre tricolor",
+            "text": "Los mas ricos",
+            "price": 500.00,
+            "image": "http://miohelados.com.ar/resources/produccion/contenidos/medium/imagenes/productos/renovar/Tricolor.jpg",
             "stock": -1,
             "onlyCash": false,
             "category": "Postres",
@@ -89,7 +115,7 @@
             "title": "1 kilo de helado",
             "text": "Elegi hasta 4 de nuestros más\nricos sabores ",
             "price": 1300.00,
-            "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
+            "image": "https://static.tufic-helados.com/files/5e0d10adcc49b763c8af3788ce9631e2.jpg",
             "stock": -1,
             "onlyCash": false,
             "category": "Helado",
@@ -102,12 +128,38 @@
             "title": "1/2 kilo de helado",
             "text": "Elegi hasta 3 de nuestros más\nricos sabores ",
             "price": 1300.00,
-            "image": "https://www.hola.com/imagenes/cocina/noticiaslibros/20200819173755/helados-pocos-ingredientes/0-856-836/portada-adobe-m.jpg",
+            "image": "https://static.tufic-helados.com/files/9291a572070d791cdc3e60873e084965.jpg",
             "stock": -1,
             "onlyCash": false,
             "category": "Helado",
             "tags": [
                 "helado"
+            ]
+        },
+        {
+            "id": "e5",
+            "title": "yogurt 1/4 Kg",
+            "text": "Elegi hasta 3 de nuestros más\nricos sabores ",
+            "price": 1300.00,
+            "image": "https://static.tufic-helados.com/img/index/yogurt/1.jpg",
+            "stock": -1,
+            "onlyCash": false,
+            "category": "yogurt",
+            "tags": [
+                "yogurt"
+            ]
+        },
+        {
+            "id": "e5",
+            "title": "yogurt 1/2 Kg",
+            "text": "Elegi hasta 3 de nuestros más\nricos sabores ",
+            "price": 1300.00,
+            "image": "https://static.tufic-helados.com/img/index/yogurt/2.jpg",
+            "stock": -1,
+            "onlyCash": false,
+            "category": "yogurt",
+            "tags": [
+                "yogurt"
             ]
         }
        

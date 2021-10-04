@@ -40,7 +40,7 @@ class ProductosPage extends StatelessWidget {
     final productosProvider = Provider.of<ProductosProvider>(context);
 
     final Future<List<ProductListItem>> _calculation =
-        Future<List<ProductListItem>>.delayed(const Duration(seconds: 3),
+        Future<List<ProductListItem>>.delayed(const Duration(milliseconds: 500),
             () => productosProvider.getProductList());
 
     return FutureBuilder(

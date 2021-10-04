@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/pages/home_page.dart';
-import 'package:tufic_app/pages/menu_producto_pages.dart';
-import 'package:tufic_app/pages/productos_pages.dart';
+import 'package:tufic_app/pages/menu_producto_page.dart';
+import 'package:tufic_app/pages/productos_page.dart';
+import 'package:tufic_app/pages/seleccionar_sabores_page.dart';
 import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/category_provider.dart';
 import 'package:tufic_app/services/producto_provider.dart';
@@ -56,6 +57,7 @@ class TuficApp extends StatelessWidget {
         'home': (_) => const HomePage(),
         'productos': (_) => const ProductosPage(),
         'menuProducto': (_) => const MenuProductoPages(),
+        'seleccionSabores': (_) => const SeleccionarSaboresPage(),
       },
     );
   }
