@@ -24,32 +24,37 @@
                     {
                         "title": "Sabores",
                         "button": "Seleccionar",
+                        "length": -1,
                         "minLength": 3,
                         "maxLength": 3,
                         "maxLengthPerOption": null,
                         "aditionalOffset": null,
                         "pricePerAditional": 0.00,
                         "msg": {
-                            "empty": "No se seleccionaron alfajores."
+                            "empty": "No se seleccionaron alfajores.",
+                            "aditionalOffset": null
                         },
                         "options": [
                             {
                                 "id": "mp11",
                                 "title": "Alfajor almendrado",
                                 "description": "",
-                                "stock": -1
+                                "stock": -1,
+                                "price": 0.00
                             },
                             {
                                 "id": "mp12",
                                 "title": "Alfajor de dulce de leche",
                                 "description": "",
-                                "stock": -1
+                                "stock": -1,
+                                "price": 0.00
                             },
                             {
                                 "id": "mp12",
                                 "title": "Alfajor de chocolate",
                                 "description": "",
-                                "stock": -1
+                                "stock": -1,
+                                "price": 0.00
                             }
                         ]
                     }

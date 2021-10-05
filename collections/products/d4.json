@@ -30,38 +30,39 @@
                         "aditionalOffset": null,
                         "pricePerAditional": 0.00,   
                         "msg": {
-                            "empty": "No se seleccionaron sabores."
+                            "empty": "No se seleccionaron sabores.",
+                            "aditionalOffset": null
                         },
                         "options": [
                             {
                                 "id": "mp2",
                                 "title": "Chocolate",
-                                "description": "",
+                                "description": "Chocolate",
                                 "stock": -1
                             },
                             {
                                 "id": "mp2",
                                 "title": "oreo",
-                                "description": "",
+                                "description": "otra descripccion",
                                 "stock": -1
                             },
                             {
                                 "id": "mp2",
                                 "title": "Dulce de leche c/brounie",
-                                "description": "",
+                                "description": "Dulce",
                                 "stock": -1
                             },
                             {
                                 "id": "mp2",
                                 "title": "Mascarpone",
-                                "description": "",
+                                "description": "Mascarpone",
                                 "stock": -1
                             },
 
                             {
                                 "id": "mp2",
                                 "title": "Frutilla",
-                                "description": "",
+                                "description": "Frutilla",
                                 "stock": -1
                             },
 
@@ -74,7 +75,7 @@
                             {
                                 "id": "mp2",
                                 "title": "Maracuya",
-                                "description": "",
+                                "description": "otra descripccion",
                                 "stock": -1
                             },
 
@@ -106,23 +107,21 @@
                             {
                                 "id": "mp7",
                                 "title": "Chips de chocolate",
-                                "description": "",
+                                "description": "otra descripccion",
                                 "stock": -1,
                                 "price": 0.00
                             },
                             {
                                 "id": "mp8",
                                 "title": "Rocklets",
-                                "description": "",
+                                "description": "Rocklets",
                                 "stock": -1,
                                 "price": 0.00
                             },
                             {
                                 "id": "mp9",
                                 "title": "Granola crocante",
-                                "quantity": 1,
-                                "weightUnit": "unit",
-                                "description": "",
+                                "description": "Granola",
                                 "stock": -1,
                                 "price": 0.00
                             }

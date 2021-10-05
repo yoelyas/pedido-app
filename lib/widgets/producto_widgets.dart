@@ -204,7 +204,7 @@ class _ModeloPages extends StatelessWidget {
         ),
         onPressed: () {
           productoProvider.initializate(productListItem);
-          seleccionProvider.initializate(SeleccionarSabores());
+          seleccionProvider.initializate(const SeleccionarSabores());
           Navigator.pushNamed(context, MenuProductoPages.routeName);
         });
   }
@@ -220,7 +220,6 @@ class ProductoMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productoProvider = Provider.of<ProductoProvider>(context);
     double precio = productListItem.price;
 
     return SizedBox(

@@ -21,7 +21,6 @@ class ProductosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print("Soy ProductosPage y me estoy redibujando");
     final cartProvider = Provider.of<CartProvider>(context);
     final mainAppBar = MainAppBar(
         context: context,

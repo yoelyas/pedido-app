@@ -31,7 +31,8 @@
                         "aditionalOffset": -1,
                         "pricePerAditional": 0.00,
                         "msg": {
-                            "empty": "No se seleccionaron sabores."
+                            "empty": "No se seleccionaron sabores.",
+                            "aditionalOffset": null
                         },
                         "options": [
                             {
@@ -84,7 +85,8 @@
                         "aditionalOffset": -1,
                         "pricePerAditional": 0.00,
                         "msg": {
-                            "empty": "No se seleccionaron postres."
+                            "empty": "No se seleccionaron postres.",
+                            "aditionalOffset": null
                         },
                         "options": [
                             {
@@ -123,7 +125,9 @@
                         "aditionalOffset": -1,
                         "pricePerAditional": 0.00,
                         "msg": {
-                            "empty": "No se seleccionaron alfajores."
+                            "empty": "No se seleccionaron alfajores.",
+                            "aditionalOffset": null
+
                         },
                         "options": [
                             {

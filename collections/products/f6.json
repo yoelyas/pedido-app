@@ -30,26 +30,30 @@
                         "aditionalOffset": null,
                         "pricePerAditional": 0.00,
                         "msg": {
-                            "empty": "No se seleccionaron sabores."
+                            "empty": "No se seleccionaron sabores.",
+                            "aditionalOffset": null
                         },
                         "options": [
                             {
                                 "id": "mp2",
                                 "title": "Natural",
                                 "description": "",
-                                "stock": -1
+                                "stock": -1,
+                                "price": 0.00
                             },
                             {
                                 "id": "mp2",
                                 "title": "Frutilla",
                                 "description": "",
-                                "stock": -1
+                                "stock": -1,
+                                "price": 0.00
                             },
                             {
                                 "id": "mp2",
                                 "title": "Dulce de leche",
                                 "description": "",
-                                "stock": -1
+                                "stock": -1,
+                                "price": 0.00
                             }
                             
                             
@@ -86,8 +90,6 @@
                             {
                                 "id": "mp9",
                                 "title": "Granola crocante",
-                                "quantity": 1,
-                                "weightUnit": "unit",
                                 "description": "",
                                 "stock": -1,
                                 "price": 0.00

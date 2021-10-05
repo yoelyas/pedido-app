@@ -69,7 +69,9 @@ class MenuCategoriaWidget extends StatelessWidget {
             '${categoria[0].toUpperCase()}${categoria.substring(1)}',
             textAlign: TextAlign.start,
             style: TextStyle(
-              color: Colors.black,
+              color: categoryProvider.isSelected(categoria)
+                  ? tuficTheme.primary
+                  : Colors.black,
               fontSize: 20,
               fontFamily: tuficTheme.fonts.text,
             ),

@@ -23,14 +23,15 @@
                     {
                         "title": "Sabores",
                         "button": "Seleccionar",
-                        "length": null,
+                        "length": -1,
                         "minLength": 3,
                         "maxLength": 3,
                         "maxLengthPerOption": null,
                         "aditionalOffset": null,
                         "pricePerAditional": 0.00,
                         "msg": {
-                            "empty": "No se seleccionaron Paletas."
+                            "empty": "No se seleccionaron Paletas.",
+                            "aditionalOffset": null
                         },
                         "options": [
                             {

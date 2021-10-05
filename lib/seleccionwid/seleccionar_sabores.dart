@@ -4,6 +4,8 @@ import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/pages/seleccionar_sabores_page.dart';
 
 class SeleccionarSabores extends StatelessWidget {
+  const SeleccionarSabores({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(

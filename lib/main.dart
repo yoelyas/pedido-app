@@ -10,6 +10,7 @@ import 'package:tufic_app/services/producto_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';
 import 'package:tufic_app/services/search_provider.dart';
 import 'package:tufic_app/services/seleccion_provider.dart';
+import 'package:tufic_app/services/selected_options_providers.dart';
 
 void main() => runApp(const AppState());
 
@@ -28,6 +29,9 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ProductosProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SelectedOptionsProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => SearchProvider(),
