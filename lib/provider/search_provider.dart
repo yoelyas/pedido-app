@@ -24,7 +24,9 @@ class SearchProvider with ChangeNotifier {
   setSearch(String text) {
     if (text.length > 1) {
       busqueda = '${text[0].toUpperCase()}${text.substring(1)}';
+      notifyListeners();
     } else {
+      notifyListeners();
       busqueda = text;
     }
   }
