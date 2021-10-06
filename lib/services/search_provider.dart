@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tufic_app/models/product_list_item.dart';
 
+//
 class SearchProvider with ChangeNotifier {
   String busqueda = "";
 
@@ -16,9 +17,6 @@ class SearchProvider with ChangeNotifier {
           element.price.toString().contains(getSearch().toLowerCase())) {
         filtered.add(element);
       }
-
-      //.toLowerCase().contains(getSearch().toLowerCase()))
-
     }
     return filtered;
   }

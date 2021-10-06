@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/components/main_app_bar.dart';
-import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/models/product_list_item.dart';
-import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/producto_provider.dart';
 import 'package:tufic_app/services/seleccion_provider.dart';
 import 'package:tufic_app/widgets/producto_widgets.dart';
 import 'package:tufic_app/widgets/sidebar_menu.dart';
 
 class MenuProductoPages extends StatelessWidget {
+  //ruta ulilizada para navegar hasta esta pantalla
   static const String routeName = 'menuProducto';
   const MenuProductoPages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final seleccionProvider = Provider.of<SeleccionProvider>(context);
-    final cartProvider = Provider.of<CartProvider>(context);
+    //configura el appbar
     final mainAppBar = MainAppBar(
-        context: context,
-        logo: APP_CONFIG['appBar']!['logo'],
-        store: cartProvider.getStore());
+      context: context,
+    );
 
     return Scaffold(
         appBar: mainAppBar.getWidget(true),
@@ -38,7 +36,9 @@ class MenuProductoPages extends StatelessWidget {
               padding: const EdgeInsets.all(5),
               // ignore: prefer_const_literals_to_create_immutables
               children: [
+                //muestra el producto que se muestra debajo del appbar
                 _Contenido(),
+                //muestra la parte de lececcionar
                 seleccionProvider.getSeleccion() as Widget
               ],
             ),
@@ -48,6 +48,7 @@ class MenuProductoPages extends StatelessWidget {
   }
 }
 
+//
 class _Contenido extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

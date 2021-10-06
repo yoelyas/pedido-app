@@ -4,6 +4,7 @@ import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/const/menu.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 
+//menu del costado
 class SideBarMenu extends StatelessWidget {
   // ignore: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
   SideBarMenu({required this.context});
@@ -91,6 +92,7 @@ class _MenuBottom extends StatelessWidget {
           fontFamily: tuficTheme.fonts.title,
         ),
       ),
+      //Por ahora solo te lleva al homepages
       onTap: () => Navigator.pushReplacementNamed(context, routeName),
     );
   }

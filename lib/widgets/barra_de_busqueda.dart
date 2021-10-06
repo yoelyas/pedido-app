@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/services/search_provider.dart';
 
+//barra de busqueda
 class MySearchForm extends StatefulWidget {
   const MySearchForm({Key? key}) : super(key: key);
 
@@ -43,9 +44,12 @@ class _MyCustomFormState extends State<MySearchForm> {
               },
               placeholder: 'Buscar...',
               autocorrect: false,
-              prefix: const Icon(
-                Icons.search,
-                color: Colors.black45,
+              prefix: const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Icon(
+                  Icons.search,
+                  color: Colors.black45,
+                ),
               ),
               suffix: searchProvider.getSearch().isNotEmpty
                   ? IconButton(

@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/components/main_app_bar.dart';
-import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
-import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/category_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';
 import 'package:tufic_app/services/search_provider.dart';
@@ -21,20 +19,19 @@ class ProductosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
     final mainAppBar = MainAppBar(
-        context: context,
-        logo: APP_CONFIG['appBar']!['logo'],
-        store: cartProvider.getStore());
+      context: context,
+    );
 
     return Scaffold(
         appBar: mainAppBar.getWidget(false),
         drawer: SideBarMenu(context: context),
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         body: buildProductList(context) //(context),
         );
   }
 
+//Crea un future para cargar el JSON de productos y crea Widgets con dicha informacion
   Widget buildProductList(BuildContext context) {
     final productosProvider = Provider.of<ProductosProvider>(context);
 
@@ -42,6 +39,7 @@ class ProductosPage extends StatelessWidget {
         Future<List<ProductListItem>>.delayed(const Duration(milliseconds: 500),
             () => productosProvider.getProductList());
 
+// muestra un CircularProgressIndicator hasta que carga el Json
     return FutureBuilder(
       future: _calculation,
       builder: (context, AsyncSnapshot<List> snapshot) {
@@ -72,6 +70,7 @@ class Productos extends StatelessWidget {
     // filtrar segun
     List<ProductListItem> productosFiltered = searchProvider.filter(productos);
 
+    //recorre todos los productos opteniendo las categorias
     List<String> categorias = [];
     for (var item in productosFiltered) {
       if (!categorias.contains(item.category)) {
@@ -79,7 +78,10 @@ class Productos extends StatelessWidget {
       }
     }
 
+    //revisar esta parte
     // Comparar listas de categorias antes de setear, solo setear si son distintas
+    //seteando su visivilidad en 0
+    //en el caso de que categorias este vacio
     if (categorias.isNotEmpty) {
       for (var category in categoryProvider.getCategoryList()) {
         if (!categorias.contains(category)) {
@@ -92,10 +94,13 @@ class Productos extends StatelessWidget {
       categoryProvider.setCategoryList(categorias);
     }
 
+    //Si no hay una categoria seleccionada setea la primera categoria
+    //que alla en  la lista de categorias
     if (categorias.isNotEmpty && categoryProvider.getSelected().isEmpty) {
       categoryProvider.setSelectedCategory(categorias[0]);
     }
 
+    //crea Los productos
     MenuCategoriasWidget menuCategoriasWidget = MenuCategoriasWidget(
       categorias: categorias,
     );
@@ -111,6 +116,7 @@ class Productos extends StatelessWidget {
           child: MySearchForm(),
           //child: SearchBar.build(context),
         ),
+        //crea la pantalla de busqueda si encuentra o no los productos
         productosFiltered.isEmpty
             ? widgetSinResultados(context, searchProvider)
             : Expanded(

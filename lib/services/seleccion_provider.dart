@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//setea la seleccion de sabores una ves seleccionado el producto
 class SeleccionProvider extends ChangeNotifier {
   Widget? _product;
   String _status = 'no_inicializado';

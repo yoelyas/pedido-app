@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:throttling/throttling.dart';
 
+//se usa para mover los listviw en productos_pages
 class CategoryProvider with ChangeNotifier {
   String _selectedCategory = '';
   List<String> categoryList = [];
   Map<String, int> categoryVisibility = {};
 
+  //mueve el Listviw de categorias
   final _categoriesScrollController = AutoScrollController();
+  //mueve el listviw de productos
   final _productsScrollController = AutoScrollController();
 
+// añade un delay a la hora de scrolear los Listiw
   final _debouncer = Debouncing(duration: const Duration(milliseconds: 500));
 
   CategoryProvider() {
@@ -51,6 +55,7 @@ class CategoryProvider with ChangeNotifier {
     return 0;
   }
 
+// setea y mueve los listviw segun la caategoria seleccionada
   goToCategory(String category) {
     setSelectedCategory(category);
     notifyListeners();
@@ -67,22 +72,7 @@ class CategoryProvider with ChangeNotifier {
   AutoScrollController getProductsScrollController() =>
       _productsScrollController;
 
-  /*
-  void onScroll() {
-    if (!_categoriesScrollController.isAutoScrolling) {
-      int index = 0; // por defecto, primer cat seleccionada
-      for (var i = 0; i < categoryList.length; i++) {
-        if (categoryVisibility[getCategoryByIndex(i)]! > 0) {
-          index = i;
-          break;
-        }
-      }
-      print(categoryVisibility);
-      asyncSelectCategory(getCategoryByIndex(index));
-    }
-  }
-  */
-
+// cambia la categoria seleccionada segun la visivilidad y cual aparese primero
   void asyncSelectCategory() {
     // por defecto, primer cat seleccionada
     int index = 0;
@@ -115,8 +105,6 @@ class CategoryProvider with ChangeNotifier {
   }
 
   void setCategoryVisibility(String category, double visibility) {
-    // print(category + ' => ' + visibility.round().toString());
     categoryVisibility[category] = visibility.floor();
-    //asyncSelectCategory(category);
   }
 }

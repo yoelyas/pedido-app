@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/pages/productos_page.dart';
-import 'package:tufic_app/providers/cart_provider.dart';
+import 'package:tufic_app/services/cart_provider.dart';
 
+//crea el boton de sucursal
 class BottomSucursal extends StatelessWidget {
   final String text;
   // ignore: use_key_in_widget_constructors
@@ -42,6 +43,7 @@ class BottomSucursal extends StatelessWidget {
         ),
       ),
       onPressed: () {
+        //inicializa el local y se mueve a otra pantalla
         cartProvider.initializate(text);
         Navigator.pushReplacementNamed(context, ProductosPage.routeName);
       },

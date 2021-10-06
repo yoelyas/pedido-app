@@ -7,7 +7,7 @@ class SelectedOptionsProvider extends ChangeNotifier {
   // una propiedad marca de tiempo como para no
 
   Future<Options> getProductList() async {
-    final body = await rootBundle.loadString('collections/products/f6.json');
+    final body = await rootBundle.loadString('collections/products/a1.json');
     productList = ProductOptionsResponce.fromJson(body).data;
     notifyListeners();
     return productList;

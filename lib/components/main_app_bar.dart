@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/libraries/responsive.dart';
+import 'package:tufic_app/services/cart_provider.dart';
 
 class MainAppBar {
   BuildContext context;
-  String store;
-  String logo;
   Responsive? responsive;
 
   Map<String, double> heightMap = {
@@ -21,17 +21,15 @@ class MainAppBar {
 
   MainAppBar({
     required this.context,
-    required this.store,
-    required this.logo,
   }) {
     responsive = Responsive(context: context);
-    //responsive.fit(xs: 12, xl: 20);
   }
 
   AppBar getWidget(bool backButtom) {
+    final cartProvider = Provider.of<CartProvider>(context);
     List<Widget> column = [
       Image.asset(
-        logo,
+        APP_CONFIG['appBar']!['logo'],
         fit: BoxFit.contain,
         //el -10 es el margen que quiero que tenga mi logo
         height: responsive!.fit(heightMap) - title,
@@ -40,17 +38,18 @@ class MainAppBar {
 
 // dibuja la sucursal en el appbar si este se encuentra seteado
 // en caso contrario setea su font el 0 para que el appbar ocupe menos espacio
-    if (store.isNotEmpty) {
+    if (cartProvider.getStore().isNotEmpty) {
       //agrega una separacion entre el titutlo y la sucursal
       column.add(const SizedBox(
         height: 5,
       ));
-      column.add(Text(store.toUpperCase(), //cartProvider.getStore(),
-          style: TextStyle(
-            color: tuficTheme.primary,
-            fontSize: ((responsive!.fit(heightMap) * 0.5) - subTitle + 10),
-            fontFamily: tuficTheme.fonts.text,
-          )));
+      column.add(
+          Text(cartProvider.getStore().toUpperCase(), //cartProvider.getStore(),
+              style: TextStyle(
+                color: tuficTheme.primary,
+                fontSize: ((responsive!.fit(heightMap) * 0.5) - subTitle + 10),
+                fontFamily: tuficTheme.fonts.text,
+              )));
     }
     return AppBar(
       elevation: 0,
@@ -64,19 +63,12 @@ class MainAppBar {
       title:
           Column(mainAxisAlignment: MainAxisAlignment.center, children: column),
       actions: <Widget>[
-        _DrawCart(store: store),
+        _DrawCart(store: cartProvider.getStore()),
       ],
       backgroundColor: Colors.white,
       iconTheme: const IconThemeData(color: Colors.black),
     );
   }
-
-// debuelve el alto del appbar sumandle el tamaño del subtitulo si este esta seteado
-  /* double _getHeightAppBar() {
-    double heigth = responsive!.fit(heightMap);
-
-    return store.isEmpty ? heigth : heigth + subTitle;
-  }*/
 }
 
 // ignore: must_be_immutable

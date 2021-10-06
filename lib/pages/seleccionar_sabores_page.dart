@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/components/main_app_bar.dart';
-import 'package:tufic_app/const/config.dart';
+import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/select_options.dart';
-import 'package:tufic_app/providers/cart_provider.dart';
 import 'package:tufic_app/services/selected_options_providers.dart';
+import 'package:tufic_app/widgets/barra_de_busqueda.dart';
 import 'package:tufic_app/widgets/sidebar_menu.dart';
 
 class SeleccionarSaboresPage extends StatelessWidget {
@@ -13,12 +13,9 @@ class SeleccionarSaboresPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
-
     final mainAppBar = MainAppBar(
-        context: context,
-        logo: APP_CONFIG['appBar']!['logo'],
-        store: cartProvider.getStore());
+      context: context,
+    );
 
     return Scaffold(
         appBar: mainAppBar.getWidget(true),
@@ -32,14 +29,13 @@ class SeleccionarSaboresPage extends StatelessWidget {
                 maxWidth: 500,
                 // maxHeight: 500,
               ),
-              child: buildProductList(context)),
+              child: buildSeleccionarSaboresList(context)),
         ) ////(context),
         );
   }
 
-  Widget buildProductList(BuildContext context) {
+  Widget buildSeleccionarSaboresList(BuildContext context) {
     final optionsProvider = Provider.of<SelectedOptionsProvider>(context);
-
     final Future<Options> _calculation = Future<Options>.delayed(
         const Duration(milliseconds: 500),
         () => optionsProvider.getProductList());
@@ -48,11 +44,39 @@ class SeleccionarSaboresPage extends StatelessWidget {
       future: _calculation,
       builder: (context, AsyncSnapshot<Options> snapshot) {
         if (snapshot.hasData) {
-          return Container();
+          return SeleccionarSabores(snapshot.data as Options);
         } else {
           return const Center(child: CircularProgressIndicator());
         }
       },
+    );
+  }
+}
+
+class SeleccionarSabores extends StatelessWidget {
+  final Options options;
+  // ignore: use_key_in_widget_constructors
+  const SeleccionarSabores(this.options);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 250,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 10, top: 20),
+            child: Text("Sabores",
+                textAlign: TextAlign.start, //cartProvider.getStore(),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: tuficTheme.fonts.textBold,
+                )),
+          ),
+        ),
+        const MySearchForm(),
+      ],
     );
   }
 }

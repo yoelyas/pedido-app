@@ -4,7 +4,7 @@ import 'package:tufic_app/pages/home_page.dart';
 import 'package:tufic_app/pages/menu_producto_page.dart';
 import 'package:tufic_app/pages/productos_page.dart';
 import 'package:tufic_app/pages/seleccionar_sabores_page.dart';
-import 'package:tufic_app/providers/cart_provider.dart';
+import 'package:tufic_app/services/cart_provider.dart';
 import 'package:tufic_app/services/category_provider.dart';
 import 'package:tufic_app/services/producto_provider.dart';
 import 'package:tufic_app/services/productos_providers.dart';

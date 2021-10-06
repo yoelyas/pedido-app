@@ -4,7 +4,7 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
 import 'package:tufic_app/pages/menu_producto_page.dart';
-import 'package:tufic_app/seleccionwid/seleccionar_sabores.dart';
+import 'package:tufic_app/widgets/seleccionar_sabores.dart';
 import 'package:tufic_app/services/category_provider.dart';
 import 'package:tufic_app/services/producto_provider.dart';
 import 'package:tufic_app/services/seleccion_provider.dart';
@@ -106,12 +106,6 @@ class _ModeloPages extends StatelessWidget {
     final productoProvider = Provider.of<ProductoProvider>(context);
     final seleccionProvider = Provider.of<SeleccionProvider>(context);
     double precio = productListItem.price;
-
-    //final productoProvider = Provider.of<ProductosProvider>(context);
-    // final seleccionProvider = Provider.of<SeleccionProvider>(context);
-    // ignore: unused_local_variable
-    // final hotsaleProvider = Provider.of<HotSale>(context);
-
     return TextButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(color),
@@ -210,6 +204,7 @@ class _ModeloPages extends StatelessWidget {
   }
 }
 
+// crea el producto simplificado para cuando es seleccionado
 class ProductoMenu extends StatelessWidget {
   final ProductListItem productListItem;
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//setea la sucursal elejida
+//De momento solo el titulo hace falta agregar todo lo demas
 class CartProvider extends ChangeNotifier {
   String _store = "";
   String _status = 'no_inicializado';

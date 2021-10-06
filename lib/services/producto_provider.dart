@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tufic_app/models/product_list_item.dart';
 
+//setea el producto para llevarlo al cambio de pantalla
+//una vez bien echo no deberia utiliarse de esta manera
 class ProductoProvider extends ChangeNotifier {
   ProductListItem? _product;
   String _status = 'no_inicializado';

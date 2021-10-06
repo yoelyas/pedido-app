@@ -15,7 +15,7 @@ const Map<String, Map<String, dynamic>> APP_CONFIG = {
     },
     //este mensaje deberia venir por back pero lo pongo aca para simular
     "mensaje": {
-      "vienvenida": "Hola,\n¿Que vas a pedir hoy?",
+      "bienvenida": "Hola,\n¿Que vas a pedir hoy?",
       "alternativo": "Super oferta,\nhelado al 80% de descuento",
     },
     "deliveryAreaUrl":
