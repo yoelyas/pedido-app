@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/services/search_provider.dart';
+import 'package:tufic_app/provider/search_provider.dart';
 
 //barra de busqueda
 class MySearchForm extends StatefulWidget {

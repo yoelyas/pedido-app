@@ -4,10 +4,10 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/product_list_item.dart';
 import 'package:tufic_app/pages/menu_producto_page.dart';
+import 'package:tufic_app/provider/category_provider.dart';
+import 'package:tufic_app/provider/producto_provider.dart';
+import 'package:tufic_app/provider/seleccion_provider.dart';
 import 'package:tufic_app/widgets/seleccionar_sabores.dart';
-import 'package:tufic_app/services/category_provider.dart';
-import 'package:tufic_app/services/producto_provider.dart';
-import 'package:tufic_app/services/seleccion_provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class ProductListPage extends StatelessWidget {

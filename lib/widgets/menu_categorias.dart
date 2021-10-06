@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:tufic_app/services/category_provider.dart';
+import 'package:tufic_app/provider/category_provider.dart';
 
 // setea y crea el menu de la categoria
 class MenuCategoriasWidget extends StatelessWidget {

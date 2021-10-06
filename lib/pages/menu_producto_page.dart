@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tufic_app/components/main_app_bar.dart';
 import 'package:tufic_app/models/product_list_item.dart';
-import 'package:tufic_app/services/producto_provider.dart';
-import 'package:tufic_app/services/seleccion_provider.dart';
+import 'package:tufic_app/provider/producto_provider.dart';
+import 'package:tufic_app/provider/seleccion_provider.dart';
 import 'package:tufic_app/widgets/producto_widgets.dart';
 import 'package:tufic_app/widgets/sidebar_menu.dart';
 

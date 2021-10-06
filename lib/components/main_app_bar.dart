@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tufic_app/const/config.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/libraries/responsive.dart';
-import 'package:tufic_app/services/cart_provider.dart';
+import 'package:tufic_app/provider/cart_provider.dart';
 
 class MainAppBar {
   BuildContext context;

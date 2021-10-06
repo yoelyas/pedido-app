@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tufic_app/components/main_app_bar.dart';
 import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:tufic_app/models/select_options.dart';
-import 'package:tufic_app/services/selected_options_providers.dart';
+import 'package:tufic_app/provider/selected_options_providers.dart';
 import 'package:tufic_app/widgets/barra_de_busqueda.dart';
 import 'package:tufic_app/widgets/sidebar_menu.dart';
 
