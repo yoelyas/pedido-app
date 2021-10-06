@@ -118,7 +118,7 @@ class Productos extends StatelessWidget {
         ),
         //crea la pantalla de busqueda si encuentra o no los productos
         productosFiltered.isEmpty
-            ? widgetSinResultados(context, searchProvider)
+            ? widgetSinResultados()
             : Expanded(
                 child: Column(
                   children: [
@@ -135,7 +135,7 @@ class Productos extends StatelessWidget {
     );
   }
 
-  widgetSinResultados(BuildContext context, SearchProvider searchProvider) {
+  widgetSinResultados() {
     return Expanded(
       child: ListView(
         children: [
