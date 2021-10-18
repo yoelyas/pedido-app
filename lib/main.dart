@@ -8,7 +8,6 @@ import 'package:tufic_app/provider/cart_provider.dart';
 import 'package:tufic_app/provider/category_provider.dart';
 import 'package:tufic_app/provider/producto_provider.dart';
 import 'package:tufic_app/provider/productos_providers.dart';
-import 'package:tufic_app/provider/search_provider.dart';
 import 'package:tufic_app/provider/seleccion_provider.dart';
 import 'package:tufic_app/provider/selected_options_providers.dart';
 
@@ -34,9 +33,6 @@ class AppState extends StatelessWidget {
           create: (_) => SelectedOptionsProvider(),
         ),
         ChangeNotifierProvider(
-          create: (_) => SearchProvider(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => ProductoProvider(),
         ),
         ChangeNotifierProvider(
@@ -59,7 +55,7 @@ class TuficApp extends StatelessWidget {
       initialRoute: 'home',
       routes: {
         'home': (_) => const HomePage(),
-        'productos': (_) => const ProductosPage(),
+        'productos': (_) => ProductosPage(),
         'menuProducto': (_) => const MenuProductoPages(),
         'seleccionSabores': (_) => const SeleccionarSaboresPage(),
       },

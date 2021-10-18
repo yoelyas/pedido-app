@@ -6,15 +6,13 @@ import 'package:tufic_app/models/product_list_item.dart';
 import 'package:tufic_app/pages/menu_producto_page.dart';
 import 'package:tufic_app/provider/category_provider.dart';
 import 'package:tufic_app/provider/producto_provider.dart';
-import 'package:tufic_app/provider/seleccion_provider.dart';
-import 'package:tufic_app/widgets/seleccionar_sabores.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-class ProductListPage extends StatelessWidget {
+class ProductListViewWidget extends StatelessWidget {
   final List<ProductListItem> productList;
   final List<String> categorias;
   // ignore: use_key_in_widget_constructors
-  const ProductListPage({
+  const ProductListViewWidget({
     required this.productList,
     required this.categorias,
   });
@@ -104,7 +102,6 @@ class _ModeloPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productoProvider = Provider.of<ProductoProvider>(context);
-    final seleccionProvider = Provider.of<SeleccionProvider>(context);
     double precio = productListItem.price;
     return TextButton(
         style: ButtonStyle(
@@ -198,7 +195,7 @@ class _ModeloPages extends StatelessWidget {
         ),
         onPressed: () {
           productoProvider.initializate(productListItem);
-          seleccionProvider.initializate(const SeleccionarSabores());
+          // seleccionProvider.initializate(const SeleccionarSabores());
           Navigator.pushNamed(context, MenuProductoPages.routeName);
         });
   }

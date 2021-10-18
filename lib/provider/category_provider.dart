@@ -31,11 +31,27 @@ class CategoryProvider with ChangeNotifier {
   bool isSelected(String category) => (category == _selectedCategory);
 
   void setSelectedCategory(String category) {
-    _selectedCategory = category;
+    if (exists(category)) {
+      _selectedCategory = category;
+    } else {
+      _selectedCategory = '';
+    }
+  }
+
+  bool exists(String category) {
+    for (var item in categoryList) {
+      if (item == category) {
+        return true;
+      }
+    }
+    return false;
   }
 
   setCategoryList(List<String> categoryList) {
     this.categoryList = categoryList;
+    if (!exists(_selectedCategory) && categoryList.isNotEmpty) {
+      setSelectedCategory(categoryList[0]);
+    }
   }
 
   resetVisibility() {

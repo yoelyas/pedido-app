@@ -29,53 +29,162 @@ class SeleccionarSaboresPage extends StatelessWidget {
                 maxWidth: 500,
                 // maxHeight: 500,
               ),
-              child: buildSeleccionarSaboresList(context)),
+              child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: const OpcionesSabores())),
         ) ////(context),
         );
   }
+}
 
-  Widget buildSeleccionarSaboresList(BuildContext context) {
-    final optionsProvider = Provider.of<SelectedOptionsProvider>(context);
-    final Future<Options> _calculation = Future<Options>.delayed(
-        const Duration(milliseconds: 500),
-        () => optionsProvider.getProductList());
+class OpcionesSabores extends StatelessWidget {
+  const OpcionesSabores({Key? key}) : super(key: key);
 
-    return FutureBuilder(
-      future: _calculation,
-      builder: (context, AsyncSnapshot<Options> snapshot) {
-        if (snapshot.hasData) {
-          return SeleccionarSabores(snapshot.data as Options);
-        } else {
-          return const Center(child: CircularProgressIndicator());
-        }
-      },
+  @override
+  Widget build(BuildContext context) {
+    final selectedOptionsProvider =
+        Provider.of<SelectedOptionsProvider>(context);
+    final selectedOptions = selectedOptionsProvider.getProducto();
+    List<Widget> options = [];
+    options.add(const SizedBox(
+      height: 12,
+    ));
+    options.add(
+      Text("Sabores",
+          textAlign: TextAlign.start, //cartProvider.getStore(),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            fontFamily: tuficTheme.fonts.textBold,
+          )),
+    );
+    options.add(const SizedBox(
+      height: 12,
+    ));
+    options.add(const MySearchForm());
+    options.add(const SizedBox(
+      height: 12,
+    ));
+    for (var i = 0; i < selectedOptions!.options.length; i++) {
+      options
+          .add(opcionSabor(selectedOptions.options[i], selectedOptions.length));
+
+      if (i < selectedOptions.length - 1) {
+        options.add(const Divider());
+      }
+    }
+    return ListView(
+      children: options,
+    );
+  }
+
+  opcionSabor(OptionOption eleccion, int length) {
+    return Row(
+      children: [
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(eleccion.title,
+              textAlign: TextAlign.start, //cartProvider.getStore(),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontFamily: tuficTheme.fonts.textBold,
+              )),
+          eleccion.description.isNotEmpty
+              ? Text(eleccion.description,
+                  textAlign: TextAlign.start, //cartProvider.getStore(),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 10,
+                    fontFamily: tuficTheme.fonts.text,
+                  ))
+              : Container()
+        ]),
+        Expanded(child: Container()),
+        length == 1 ? const _CrearCheck() : _CrearContador(eleccion.stock),
+
+        //TextButton(onPressed: () {}, child: Text("holas"))
+      ],
     );
   }
 }
 
-class SeleccionarSabores extends StatelessWidget {
-  final Options options;
-  // ignore: use_key_in_widget_constructors
-  const SeleccionarSabores(this.options);
+class _CrearCheck extends StatefulWidget {
+  const _CrearCheck({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<_CrearCheck> createState() => _CrearCheckState();
+}
+
+class _CrearCheckState extends State<_CrearCheck> {
+  bool _bloquearCheck = false;
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      padding: const EdgeInsets.all(0),
+      onPressed: () {
+        setState(() {
+          _bloquearCheck = !_bloquearCheck;
+        });
+      },
+      icon: Icon(
+        _bloquearCheck ? Icons.check_circle_outline : Icons.circle_outlined,
+        size: 30,
+        color: _bloquearCheck ? tuficTheme.primary : Colors.black54,
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class _CrearContador extends StatefulWidget {
+  int stock;
+  _CrearContador(this.stock);
+
+  @override
+  // ignore: no_logic_in_create_state
+  __CrearContadorState createState() => __CrearContadorState(stock);
+}
+
+class __CrearContadorState extends State<_CrearContador> {
+  int stock;
+  __CrearContadorState(this.stock);
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [
-        SizedBox(
-          width: 250,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 10, top: 20),
-            child: Text("Sabores",
-                textAlign: TextAlign.start, //cartProvider.getStore(),
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: tuficTheme.fonts.textBold,
-                )),
+        IconButton(
+            onPressed: () {
+              if (count > 0) {
+                setState(() {
+                  count--;
+                });
+              }
+            },
+            icon: Icon(
+              Icons.remove_circle,
+              color: tuficTheme.secondary,
+            )),
+        Text(
+          "$count",
+          style: TextStyle(
+            fontSize: 14,
+            fontFamily: tuficTheme.fonts.textBold,
           ),
         ),
-        const MySearchForm(),
+        IconButton(
+            onPressed: () {
+              setState(() {
+                if (stock < 0 || count < stock) count++;
+              });
+            },
+            icon: Icon(
+              Icons.add_circle,
+              color: tuficTheme.secondary,
+            )),
       ],
     );
   }
