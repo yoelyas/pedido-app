@@ -56,14 +56,10 @@ class ProductosPage extends StatelessWidget {
 
   Widget _getBodyWidgets(
       BuildContext context, List<ProductListItem> productList) {
-    return GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: ProductListWidget(
-          productList: productList,
-          context: context,
-        ));
+    return ProductListWidget(
+      productList: productList,
+      context: context,
+    );
   }
 }
 
@@ -149,7 +145,7 @@ class _ProductListStateWidget extends State<ProductListWidget> {
 
   Widget _getFilteredProductListWidget(context) {
     print('Redibujando filtrado');
-    CategoryProvider categoryProvider = widget.categoryProvider!;
+    CategoryProvider categoryProvider = widget.categoryProvider;
     List<String> categorias = [];
     for (var item in _filteredProductList) {
       if (!categorias.contains(item.category)) {
@@ -203,45 +199,51 @@ class _ProductListStateWidget extends State<ProductListWidget> {
           borderRadius: BorderRadius.circular(50),
           color: Colors.grey.shade300,
         ),
-        child: CupertinoTextField(
-            controller: _filterController,
-            onChanged: (text) {
-              setState(() {
-                _filter.setSearchText(text);
-              });
-            },
-            placeholder: 'Buscar...',
-            autocorrect: false,
-            prefix: const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Icon(
-                Icons.search,
-                color: Colors.black45,
+        child: GestureDetector(
+          onTap: () {
+            print("hola");
+            FocusScope.of(context).unfocus();
+          },
+          child: CupertinoTextField(
+              controller: _filterController,
+              onChanged: (text) {
+                setState(() {
+                  _filter.setSearchText(text);
+                });
+              },
+              placeholder: 'Buscar...',
+              autocorrect: false,
+              prefix: const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Icon(
+                  Icons.search,
+                  color: Colors.black45,
+                ),
               ),
-            ),
-            suffix: _filter.getText().isNotEmpty
-                ? IconButton(
-                    padding: const EdgeInsets.all(5),
-                    onPressed: () {
-                      _filterController.clear();
-                      setState(() {
-                        _filter.reset();
-                      });
-                      //cierra el teclado virtual
-                      FocusScope.of(context).requestFocus(FocusNode());
-                    },
-                    iconSize: 20,
-                    color: Colors.black45,
-                    icon: const Icon(
-                      Icons.cancel_outlined,
-                    ))
-                : Container(),
-            style: TextStyle(
-              color: Colors.black87, //tuficTheme.primary,
-              fontSize: 15,
-              fontFamily: tuficTheme.fonts.text,
-            ),
-            decoration: const BoxDecoration(color: Colors.transparent)),
+              suffix: _filter.getText().isNotEmpty
+                  ? IconButton(
+                      padding: const EdgeInsets.all(5),
+                      onPressed: () {
+                        _filterController.clear();
+                        setState(() {
+                          _filter.reset();
+                        });
+                        //cierra el teclado virtual
+                        FocusScope.of(context).requestFocus(FocusNode());
+                      },
+                      iconSize: 20,
+                      color: Colors.black45,
+                      icon: const Icon(
+                        Icons.cancel_outlined,
+                      ))
+                  : Container(),
+              style: TextStyle(
+                color: Colors.black87, //tuficTheme.primary,
+                fontSize: 15,
+                fontFamily: tuficTheme.fonts.text,
+              ),
+              decoration: const BoxDecoration(color: Colors.transparent)),
+        ),
       ),
     );
   }
