@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
-import 'package:tufic_app/models/product_list_item.dart';
-import 'package:tufic_app/models/product_list_response.dart';
+import 'package:pedidos_app/models/product_list_item.dart';
+import 'package:pedidos_app/models/product_list_response.dart';
 
 // llama y setea la lista de producto
 class ProductosProvider extends ChangeNotifier {

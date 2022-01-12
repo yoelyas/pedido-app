@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos_app/const/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:tufic_app/components/main_app_bar.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/models/select_options.dart';
-import 'package:tufic_app/provider/selected_options_providers.dart';
-import 'package:tufic_app/widgets/barra_de_busqueda.dart';
-import 'package:tufic_app/widgets/sidebar_menu.dart';
+import 'package:pedidos_app/components/main_app_bar.dart';
+import 'package:pedidos_app/models/select_options.dart';
+import 'package:pedidos_app/provider/selected_options_providers.dart';
+import 'package:pedidos_app/widgets/barra_de_busqueda.dart';
+import 'package:pedidos_app/widgets/sidebar_menu.dart';
 
 class SeleccionarSaboresPage extends StatelessWidget {
   static const String routeName = 'seleccionSabores';
@@ -55,7 +55,7 @@ class OpcionesSabores extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontSize: 16,
-            fontFamily: tuficTheme.fonts.textBold,
+            fontFamily: pedidosTheme.fonts.textBold,
           )),
     );
     options.add(const SizedBox(
@@ -87,7 +87,7 @@ class OpcionesSabores extends StatelessWidget {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
-                fontFamily: tuficTheme.fonts.textBold,
+                fontFamily: pedidosTheme.fonts.textBold,
               )),
           eleccion.description.isNotEmpty
               ? Text(eleccion.description,
@@ -95,7 +95,7 @@ class OpcionesSabores extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 10,
-                    fontFamily: tuficTheme.fonts.text,
+                    fontFamily: pedidosTheme.fonts.text,
                   ))
               : Container()
         ]),
@@ -131,7 +131,7 @@ class _CrearCheckState extends State<_CrearCheck> {
       icon: Icon(
         _bloquearCheck ? Icons.check_circle_outline : Icons.circle_outlined,
         size: 30,
-        color: _bloquearCheck ? tuficTheme.primary : Colors.black54,
+        color: _bloquearCheck ? pedidosTheme.primary : Colors.black54,
       ),
     );
   }
@@ -166,13 +166,13 @@ class __CrearContadorState extends State<_CrearContador> {
             },
             icon: Icon(
               Icons.remove_circle,
-              color: tuficTheme.secondary,
+              color: pedidosTheme.secondary,
             )),
         Text(
           "$count",
           style: TextStyle(
             fontSize: 14,
-            fontFamily: tuficTheme.fonts.textBold,
+            fontFamily: pedidosTheme.fonts.textBold,
           ),
         ),
         IconButton(
@@ -183,7 +183,7 @@ class __CrearContadorState extends State<_CrearContador> {
             },
             icon: Icon(
               Icons.add_circle,
-              color: tuficTheme.secondary,
+              color: pedidosTheme.secondary,
             )),
       ],
     );

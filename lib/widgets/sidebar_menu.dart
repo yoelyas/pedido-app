@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:tufic_app/const/config.dart';
-import 'package:tufic_app/const/menu.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
+import 'package:pedidos_app/const/config.dart';
+import 'package:pedidos_app/const/menu.dart';
+import 'package:pedidos_app/const/theme.dart';
 
 //menu del costado
 class SideBarMenu extends StatelessWidget {
@@ -45,7 +45,7 @@ class SideBarMenu extends StatelessWidget {
               style: TextStyle(
                 //color: Colors.white,
                 fontSize: 35,
-                fontFamily: tuficTheme.fonts.title,
+                fontFamily: pedidosTheme.fonts.title,
               ),
             ),
           ),
@@ -89,7 +89,7 @@ class _MenuBottom extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-          fontFamily: tuficTheme.fonts.title,
+          fontFamily: pedidosTheme.fonts.title,
         ),
       ),
       //Por ahora solo te lleva al homepages

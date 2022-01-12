@@ -1,16 +1,16 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pedidos_app/const/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:tufic_app/components/main_app_bar.dart';
-import 'package:tufic_app/const/filter.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/models/product_list_item.dart';
-import 'package:tufic_app/provider/category_provider.dart';
-import 'package:tufic_app/provider/productos_providers.dart';
-import 'package:tufic_app/widgets/menu_categorias.dart';
-import 'package:tufic_app/widgets/producto_widgets.dart';
-import 'package:tufic_app/widgets/sidebar_menu.dart';
+import 'package:pedidos_app/components/main_app_bar.dart';
+import 'package:pedidos_app/const/filter.dart';
+import 'package:pedidos_app/models/product_list_item.dart';
+import 'package:pedidos_app/provider/category_provider.dart';
+import 'package:pedidos_app/provider/productos_providers.dart';
+import 'package:pedidos_app/widgets/menu_categorias.dart';
+import 'package:pedidos_app/widgets/producto_widgets.dart';
+import 'package:pedidos_app/widgets/sidebar_menu.dart';
 
 class ProductosPage extends StatelessWidget {
   static const String routeName = 'productos';
@@ -132,7 +132,7 @@ class _ProductListStateWidget extends State<ProductListWidget> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
-                      fontFamily: tuficTheme.fonts.text,
+                      fontFamily: pedidosTheme.fonts.text,
                     ),
                     textAlign: TextAlign.center),
               ],
@@ -238,9 +238,9 @@ class _ProductListStateWidget extends State<ProductListWidget> {
                       ))
                   : Container(),
               style: TextStyle(
-                color: Colors.black87, //tuficTheme.primary,
+                color: Colors.black87, //pedidosTheme.primary,
                 fontSize: 15,
-                fontFamily: tuficTheme.fonts.text,
+                fontFamily: pedidosTheme.fonts.text,
               ),
               decoration: const BoxDecoration(color: Colors.transparent)),
         ),

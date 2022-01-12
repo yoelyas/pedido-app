@@ -1,4 +1,4 @@
-# Tufic APP v10
+# pedidos APP v10
 
 A new Flutter project.
 

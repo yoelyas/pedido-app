@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tufic_app/components/main_app_bar.dart';
-import 'package:tufic_app/const/config.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/widgets/buttons.dart';
-import 'package:tufic_app/widgets/sidebar_menu.dart';
+import 'package:pedidos_app/components/main_app_bar.dart';
+import 'package:pedidos_app/const/config.dart';
+import 'package:pedidos_app/const/theme.dart';
+import 'package:pedidos_app/widgets/buttons.dart';
+import 'package:pedidos_app/widgets/sidebar_menu.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = 'home';
@@ -50,9 +50,9 @@ class HomeBody extends StatelessWidget {
           Center(
             child: Text('Elegí una sucursal',
                 style: TextStyle(
-                  color: tuficTheme.secondary,
+                  color: pedidosTheme.secondary,
                   fontSize: 12,
-                  fontFamily: tuficTheme.fonts.text,
+                  fontFamily: pedidosTheme.fonts.text,
                 )),
           ),
           const SizedBox(height: 12),
@@ -70,11 +70,11 @@ class HomeBody extends StatelessWidget {
               // String url = VerAreaDelibety();
               // html.window.open(url, 'name');
             },
-            child: Text('Ver área de delivery',
+            child: Text('Ver área de pedidosery',
                 style: TextStyle(
-                  color: tuficTheme.third,
+                  color: pedidosTheme.third,
                   fontSize: 14,
-                  fontFamily: tuficTheme.fonts.text,
+                  fontFamily: pedidosTheme.fonts.text,
                 )),
           ),
         ],
@@ -116,7 +116,7 @@ class WelcomeMessage extends StatelessWidget {
       children: [
         const Image(
           fit: BoxFit.fill,
-          image: AssetImage('assets/TRAMAS_tufic-04.png'),
+          image: AssetImage('assets/TRAMAS-04.png'),
           height: 94,
         ),
         Center(
@@ -128,7 +128,7 @@ class WelcomeMessage extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontFamily: tuficTheme.fonts.display,
+                fontFamily: pedidosTheme.fonts.display,
               ),
             ),
           ),

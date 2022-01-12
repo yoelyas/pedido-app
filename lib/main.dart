@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tufic_app/pages/home_page.dart';
-import 'package:tufic_app/pages/menu_producto_page.dart';
-import 'package:tufic_app/pages/productos_page.dart';
-import 'package:tufic_app/pages/seleccionar_sabores_page.dart';
-import 'package:tufic_app/provider/cart_provider.dart';
-import 'package:tufic_app/provider/category_provider.dart';
-import 'package:tufic_app/provider/producto_provider.dart';
-import 'package:tufic_app/provider/productos_providers.dart';
-import 'package:tufic_app/provider/seleccion_provider.dart';
-import 'package:tufic_app/provider/selected_options_providers.dart';
+import 'package:pedidos_app/pages/home_page.dart';
+import 'package:pedidos_app/pages/menu_producto_page.dart';
+import 'package:pedidos_app/pages/productos_page.dart';
+import 'package:pedidos_app/pages/seleccionar_sabores_page.dart';
+import 'package:pedidos_app/provider/cart_provider.dart';
+import 'package:pedidos_app/provider/category_provider.dart';
+import 'package:pedidos_app/provider/producto_provider.dart';
+import 'package:pedidos_app/provider/productos_providers.dart';
+import 'package:pedidos_app/provider/seleccion_provider.dart';
+import 'package:pedidos_app/provider/selected_options_providers.dart';
 
 void main() => runApp(const AppState());
 
@@ -39,19 +39,19 @@ class AppState extends StatelessWidget {
           create: (_) => SeleccionProvider(),
         ),
       ],
-      child: const TuficApp(),
+      child: const pedidosApp(),
     );
   }
 }
 
-class TuficApp extends StatelessWidget {
-  const TuficApp({Key? key}) : super(key: key);
+class pedidosApp extends StatelessWidget {
+  const pedidosApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Tufic App',
+      title: 'pedidos App',
       initialRoute: 'home',
       routes: {
         'home': (_) => const HomePage(),

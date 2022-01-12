@@ -1,4 +1,4 @@
-package com.example.tufic_app
+package com.example.pedidos_app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
-import 'package:tufic_app/models/select_options.dart';
+import 'package:pedidos_app/models/select_options.dart';
 
 class SelectedOptionsProvider extends ChangeNotifier {
   late List<Product> productList;

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pedidos_app/const/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/pages/productos_page.dart';
-import 'package:tufic_app/provider/cart_provider.dart';
+import 'package:pedidos_app/pages/productos_page.dart';
+import 'package:pedidos_app/provider/cart_provider.dart';
 
 //crea el boton de sucursal
 class BottomSucursal extends StatelessWidget {
@@ -26,7 +26,7 @@ class BottomSucursal extends StatelessWidget {
         )),
         side: MaterialStateProperty.resolveWith<BorderSide>(
             (Set<MaterialState> states) {
-          final Color color = tuficTheme.secondary;
+          final Color color = pedidosTheme.secondary;
           return BorderSide(color: color, width: 1);
         }),
       ),
@@ -36,9 +36,9 @@ class BottomSucursal extends StatelessWidget {
         child: Center(
           child: Text(text,
               style: TextStyle(
-                color: tuficTheme.secondary,
+                color: pedidosTheme.secondary,
                 fontSize: 12,
-                fontFamily: tuficTheme.fonts.text,
+                fontFamily: pedidosTheme.fonts.text,
               )),
         ),
       ),

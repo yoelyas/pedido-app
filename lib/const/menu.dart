@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tufic_app/pages/home_page.dart';
+import 'package:pedidos_app/pages/home_page.dart';
 
 // ignore: constant_identifier_names
 const Map<String, Map<String, dynamic>> MENU_CONFIG = {

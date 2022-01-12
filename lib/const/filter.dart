@@ -1,4 +1,4 @@
-import 'package:tufic_app/models/product_list_item.dart';
+import 'package:pedidos_app/models/product_list_item.dart';
 
 class Filter {
   String _text = '';

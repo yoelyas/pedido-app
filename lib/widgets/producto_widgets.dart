@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos_app/const/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/models/product_list_item.dart';
-import 'package:tufic_app/pages/menu_producto_page.dart';
-import 'package:tufic_app/provider/category_provider.dart';
-import 'package:tufic_app/provider/producto_provider.dart';
+import 'package:pedidos_app/models/product_list_item.dart';
+import 'package:pedidos_app/pages/menu_producto_page.dart';
+import 'package:pedidos_app/provider/category_provider.dart';
+import 'package:pedidos_app/provider/producto_provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class ProductListViewWidget extends StatelessWidget {
@@ -30,7 +30,7 @@ class ProductListViewWidget extends StatelessWidget {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 15,
-                fontFamily: tuficTheme.fonts.textBold,
+                fontFamily: pedidosTheme.fonts.textBold,
               )),
         ),
       );
@@ -155,10 +155,10 @@ class _ModeloPages extends StatelessWidget {
                     child: Text(productListItem.title,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          //color: tuficTheme.secondary,
+                          //color: pedidosTheme.secondary,
                           color: colorText,
                           fontSize: 12,
-                          fontFamily: tuficTheme.fonts.textBold,
+                          fontFamily: pedidosTheme.fonts.textBold,
                         )),
                   ),
                   const SizedBox(
@@ -169,10 +169,10 @@ class _ModeloPages extends StatelessWidget {
                     child: Text(productListItem.text,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          //color: tuficTheme.primary,
+                          //color: pedidosTheme.primary,
                           color: colorText,
                           fontSize: 10,
-                          fontFamily: tuficTheme.fonts.text,
+                          fontFamily: pedidosTheme.fonts.text,
                         )),
                   ),
                   const SizedBox(
@@ -185,7 +185,7 @@ class _ModeloPages extends StatelessWidget {
                         style: TextStyle(
                           color: colorText,
                           fontSize: 15,
-                          fontFamily: tuficTheme.fonts.textBold,
+                          fontFamily: pedidosTheme.fonts.textBold,
                         )),
                   ),
                 ],
@@ -247,10 +247,10 @@ class ProductoMenu extends StatelessWidget {
                 child: Text(productListItem.title,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      //color: tuficTheme.secondary,
+                      //color: pedidosTheme.secondary,
                       color: Colors.black,
                       fontSize: 15,
-                      fontFamily: tuficTheme.fonts.textBold,
+                      fontFamily: pedidosTheme.fonts.textBold,
                     )),
               ),
               const SizedBox(
@@ -261,10 +261,10 @@ class ProductoMenu extends StatelessWidget {
                 child: Text(productListItem.text,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      //color: tuficTheme.primary,
+                      //color: pedidosTheme.primary,
                       color: Colors.black,
                       fontSize: 10,
-                      fontFamily: tuficTheme.fonts.text,
+                      fontFamily: pedidosTheme.fonts.text,
                     )),
               ),
               const SizedBox(
@@ -277,7 +277,7 @@ class ProductoMenu extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 15,
-                      fontFamily: tuficTheme.fonts.textBold,
+                      fontFamily: pedidosTheme.fonts.textBold,
                     )),
               ),
             ],

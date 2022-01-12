@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tufic_app/models/product_list_item.dart';
+import 'package:pedidos_app/models/product_list_item.dart';
 
 //setea el producto para llevarlo al cambio de pantalla
 //una vez bien echo no deberia utiliarse de esta manera

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tufic_app/const/filter.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
+import 'package:pedidos_app/const/filter.dart';
+import 'package:pedidos_app/const/theme.dart';
 
 //barra de busqueda
 class MySearchForm extends StatefulWidget {
@@ -67,9 +67,9 @@ class _MyCustomFormState extends State<MySearchForm> {
                     ))
                 : Container(),
             style: TextStyle(
-              color: Colors.black87, //tuficTheme.primary,
+              color: Colors.black87, //pedidosTheme.primary,
               fontSize: 15,
-              fontFamily: tuficTheme.fonts.text,
+              fontFamily: pedidosTheme.fonts.text,
             ),
             decoration: const BoxDecoration(color: Colors.transparent)),
       ),

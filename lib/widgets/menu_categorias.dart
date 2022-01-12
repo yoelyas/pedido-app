@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos_app/const/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:tufic_app/provider/category_provider.dart';
+import 'package:pedidos_app/provider/category_provider.dart';
 
 // setea y crea el menu de la categoria
 class MenuCategoriasWidget extends StatelessWidget {
@@ -59,7 +59,7 @@ class MenuCategoriaWidget extends StatelessWidget {
           border: Border(
               bottom: BorderSide(
                   color: isSelected
-                      ? tuficTheme.primary
+                      ? pedidosTheme.primary
                       : const Color.fromRGBO(0, 0, 0, 0),
                   width: 2))),
       child: GestureDetector(
@@ -71,10 +71,10 @@ class MenuCategoriaWidget extends StatelessWidget {
             textAlign: TextAlign.start,
             style: TextStyle(
               color: categoryProvider.isSelected(categoria)
-                  ? tuficTheme.primary
+                  ? pedidosTheme.primary
                   : Colors.black,
               fontSize: 20,
-              fontFamily: tuficTheme.fonts.text,
+              fontFamily: pedidosTheme.fonts.text,
             ),
           )),
     );

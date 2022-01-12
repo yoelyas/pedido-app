@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos_app/const/config.dart';
+import 'package:pedidos_app/const/theme.dart';
+import 'package:pedidos_app/libraries/responsive.dart';
+import 'package:pedidos_app/provider/cart_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:tufic_app/const/config.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/libraries/responsive.dart';
-import 'package:tufic_app/provider/cart_provider.dart';
 
 class MainAppBar {
   BuildContext context;
@@ -46,9 +46,9 @@ class MainAppBar {
       column.add(
           Text(cartProvider.getStore().toUpperCase(), //cartProvider.getStore(),
               style: TextStyle(
-                color: tuficTheme.primary,
+                color: pedidosTheme.primary,
                 fontSize: ((responsive!.fit(heightMap) * 0.5) - subTitle + 10),
-                fontFamily: tuficTheme.fonts.text,
+                fontFamily: pedidosTheme.fonts.text,
               )));
     }
     return AppBar(
@@ -140,9 +140,9 @@ class _DrawCartState extends State<_DrawCart> {
         child: Text(
           counter,
           style: TextStyle(
-            color: Colors.white, //tuficTheme.primary,
+            color: Colors.white, //pedidosTheme.primary,
             fontSize: fontSize,
-            fontFamily: tuficTheme.fonts.textBold,
+            fontFamily: pedidosTheme.fonts.textBold,
             fontWeight: FontWeight.bold,
           ),
         ),

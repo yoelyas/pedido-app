@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pedidos_app/const/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:tufic_app/components/main_app_bar.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/models/product_list_item.dart';
-import 'package:tufic_app/models/select_options.dart';
-import 'package:tufic_app/pages/seleccionar_sabores_page.dart';
-import 'package:tufic_app/provider/producto_provider.dart';
-import 'package:tufic_app/provider/selected_options_providers.dart';
-import 'package:tufic_app/widgets/producto_widgets.dart';
-import 'package:tufic_app/widgets/sidebar_menu.dart';
+import 'package:pedidos_app/components/main_app_bar.dart';
+import 'package:pedidos_app/models/product_list_item.dart';
+import 'package:pedidos_app/models/select_options.dart';
+import 'package:pedidos_app/pages/seleccionar_sabores_page.dart';
+import 'package:pedidos_app/provider/producto_provider.dart';
+import 'package:pedidos_app/provider/selected_options_providers.dart';
+import 'package:pedidos_app/widgets/producto_widgets.dart';
+import 'package:pedidos_app/widgets/sidebar_menu.dart';
 
 class MenuProductoPages extends StatelessWidget {
   //ruta ulilizada para navegar hasta esta pantalla
@@ -133,10 +133,10 @@ class Producto extends StatelessWidget {
               child: Text(product.title,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    //color: tuficTheme.primary,
+                    //color: pedidosTheme.primary,
                     color: Colors.black,
                     fontSize: 15,
-                    fontFamily: tuficTheme.fonts.textBold,
+                    fontFamily: pedidosTheme.fonts.textBold,
                   )),
             ),
             Padding(
@@ -144,10 +144,10 @@ class Producto extends StatelessWidget {
               child: Text('No se seleccionaron ${product.title}',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    //color: tuficTheme.primary,
+                    //color: pedidosTheme.primary,
                     color: Colors.black,
                     fontSize: 10,
-                    fontFamily: tuficTheme.fonts.text,
+                    fontFamily: pedidosTheme.fonts.text,
                   )),
             ),
           ],
@@ -158,7 +158,7 @@ class Producto extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: tuficTheme.secondary),
+                color: pedidosTheme.secondary),
             height: 30,
             width: 90,
             child: TextButton(
@@ -171,9 +171,9 @@ class Producto extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,
-                    //color: tuficTheme.primary,
+                    //color: pedidosTheme.primary,
                     fontSize: 12,
-                    fontFamily: tuficTheme.fonts.text,
+                    fontFamily: pedidosTheme.fonts.text,
                   )),
             ),
           ),

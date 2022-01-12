@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tufic_app/const/tufic_theme.dart';
-import 'package:tufic_app/pages/seleccionar_sabores_page.dart';
+import 'package:pedidos_app/const/theme.dart';
+import 'package:pedidos_app/pages/seleccionar_sabores_page.dart';
 
 class OldSeleccionarSabores extends StatelessWidget {
   const OldSeleccionarSabores({Key? key}) : super(key: key);
@@ -19,10 +19,10 @@ class OldSeleccionarSabores extends StatelessWidget {
               child: Text('sabores',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    //color: tuficTheme.primary,
+                    //color: pedidosTheme.primary,
                     color: Colors.black,
                     fontSize: 15,
-                    fontFamily: tuficTheme.fonts.textBold,
+                    fontFamily: pedidosTheme.fonts.textBold,
                   )),
             ),
             Padding(
@@ -30,10 +30,10 @@ class OldSeleccionarSabores extends StatelessWidget {
               child: Text('No se seleccionaron sabores',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    //color: tuficTheme.primary,
+                    //color: pedidosTheme.primary,
                     color: Colors.black,
                     fontSize: 10,
-                    fontFamily: tuficTheme.fonts.text,
+                    fontFamily: pedidosTheme.fonts.text,
                   )),
             ),
           ],
@@ -44,7 +44,7 @@ class OldSeleccionarSabores extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: tuficTheme.secondary),
+                color: pedidosTheme.secondary),
             height: 30,
             width: 90,
             child: TextButton(
@@ -54,9 +54,9 @@ class OldSeleccionarSabores extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,
-                    //color: tuficTheme.primary,
+                    //color: pedidosTheme.primary,
                     fontSize: 12,
-                    fontFamily: tuficTheme.fonts.text,
+                    fontFamily: pedidosTheme.fonts.text,
                   )),
             ),
           ),
