@@ -24,6 +24,7 @@ class _MyCustomFormState extends State<MySearchForm> {
     // Clean up the controller when the widget is disposed.
     myController.dispose();
     super.dispose();
+    print("a");
   }
 
   @override
